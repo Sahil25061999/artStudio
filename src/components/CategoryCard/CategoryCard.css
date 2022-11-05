@@ -1,0 +1,21 @@
+.category-card-container {
+  min-width: 18rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0.5rem;
+  /* background-color: var(); */
+}
+
+.category-card-container:hover {
+  transform: scale(0.95);
+}
+
+.category-card-container .card-head {
+  background-color: var(--accent-color);
+  transform: skewX(-18deg);
+}
+
+.category-card-container .card-heading {
+  text-transform: uppercase;
+}

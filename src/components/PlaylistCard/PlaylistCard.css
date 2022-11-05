@@ -1,0 +1,31 @@
+.playlist-card-image-container {
+  display: flex;
+  flex-wrap: nowrap;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.playlist-card-image {
+  min-width: 0;
+  height: 100%;
+}
+
+.playlist-card-head,
+.playlist-card-foot {
+  z-index: 1;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  align-self: end;
+}
+.playlist-card-foot {
+  margin-bottom: 0;
+}
+
+.gradient-container {
+  z-index: 1;
+  position: absolute;
+  border-radius: 0rem;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to top, black, transparent);
+}

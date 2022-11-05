@@ -1,0 +1,146 @@
+.playlist-modal-container {
+  display: flex;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  align-items: center;
+  backdrop-filter: brightness(35%);
+  transition: all 0.35s;
+}
+
+.playlist-modal-container-show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.playlist-modal {
+  margin: auto;
+  position: absolute;
+  min-width: 20rem;
+  max-width: fit-content;
+  background-color: var(--modal-card-background-color);
+  color: var(--primary-text-color);
+  /* background-color: var(--secondary-bg-color); */
+
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.35s cubic-bezier(0.38, 0.42, 0, 1.3);
+}
+
+.playlist-modal-show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.playlist-modal .form-head {
+  display: block;
+}
+
+.modal-title {
+  margin-bottom: 5px;
+}
+
+.modal-input-box {
+  /* width: max-content; */
+  display: flex;
+  justify-content: center;
+}
+
+.modal-form {
+  overflow: hidden;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.modal-input-title {
+  width: 50%;
+  min-width: fit-content;
+  margin: 0 0.5rem;
+  background-color: rgb(24, 22, 22);
+  border: none;
+  color: var(--primary-text-color);
+}
+
+.modal-input-title:hover,
+.modal-input-title:focus {
+  box-shadow: inset 1px 2px 2px rgb(15, 15, 15);
+  /* border-color: var(--secondary-bg-color); */
+}
+
+.form-content {
+  margin: 0.8rem 0;
+  width: 100%;
+}
+
+.checkbox-container {
+  width: max-content;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.modal-close-btn {
+  box-shadow: inset 1px 2px 2px rgb(24, 22, 22);
+  color: var(--primary-text-color);
+}
+
+/* 
+.checkbox-container,
+.checkbox-container label,
+.form-bottom {
+  display: flex;
+  justify-content: space-around;
+}
+.checkbox-container {
+  width: 95%;
+  min-width: fit-content;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.checkbox {
+  vertical-align: baseline;
+}
+
+.tags,
+.tags .modal-input-title {
+  margin: 0;
+}
+
+.modal-title,
+.modal-description {
+  padding-left: 1rem;
+  margin-bottom: 2px;
+}
+
+.modal-title-priority {
+  padding-left: 0;
+}
+
+.color-container {
+  position: relative;
+  width: max-content;
+  height: max-content;
+}
+
+.color-selector {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.color-selector:hover ~ .color-icon,
+.color-selector:focus ~ .color-icon {
+  color: var(--hover-color);
+}
+.color-icon {
+  font-size: 2rem;
+} */

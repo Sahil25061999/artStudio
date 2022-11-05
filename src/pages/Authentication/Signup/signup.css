@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+.signup-page {
+  overflow: hidden;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-template-areas: 'hero form';
+}
+
+.hero-section {
+  grid-area: hero;
+  grid-row: 1;
+  grid-row: 1 / span 2;
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+.hero-quote {
+  font-size: 1.5rem;
+  font-family: 'Raleway', sans-serif;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  backdrop-filter: blur(6px);
+}
+
+.form-section {
+  grid-area: form;
+  width: 60%;
+  place-self: center;
+  padding: 2rem;
+}
+
+.form-title {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: var(--accent-color);
+}
+
+.form-container {
+  /* background-color: var(--modal-card-background-color); */
+  border-radius: 0.5rem;
+  /* height: 90%; */
+  /* width: 80%; */
+}
+
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-label {
+  /* font-size: 1.5rem; */
+  /* color: rgb(91, 90, 90); */
+}
+
+.form-input {
+  /* width: 50%; */
+  height: 2.5rem;
+  width: 100%;
+  min-width: fit-content;
+  margin-bottom: 0.5rem;
+  /* margin: 0 0.5rem; */
+  background-color: rgb(24, 22, 22);
+  border: none;
+  color: var(--primary-text-color);
+}
+
+.signup-btn {
+  margin-top: 0.5rem;
+  /* width: 80%; */
+  font-size: 1rem;
+  background-color: var(--accent-color);
+  color: var(--primary-text-color);
+}
+
+.signup-btn:hover {
+  box-shadow: 2px 6px 16px rgba(255, 4, 0, 0.504);
+}

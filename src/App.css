@@ -49,3 +49,19 @@
   font-size: 1.2rem;
   margin: 1rem;
 }
+
+.video-list-section {
+  position: relative;
+  padding: 1rem 5rem;
+  color: var(--primary-text-color);
+  background-color: var(--secondary-bg-color);
+}
+
+.video-list-container {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+}

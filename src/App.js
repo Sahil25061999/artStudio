@@ -1,42 +1,84 @@
-import "./App.css";
-import logo from "./logo.png";
+import './App.css';
+
+import { Routes, Route, useLocation } from 'react-router-dom';
+
+import {
+  Homepage,
+  VideoList,
+  WatchLater,
+  LikedList,
+  Playlist,
+  IndividualPlaylist,
+  Login,
+  Signup,
+} from './pages/pages_index';
+import {
+  Navbar,
+  PlaylistModal,
+  SideNavbar,
+  RequiresAuth,
+} from './components/components_index';
+import Mockman from 'mockman-js';
 
 function App() {
+  let sideNavbar = null;
+  const location = useLocation();
+  const { pathname: currentPath } = location;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} alt="mockBee logo" width="180" height="180" />
-        <h1 className="brand-title">
-          Welcome to <span>mockBee!</span>
-        </h1>
-        <p className="brand-description">
-          Get started by editing <code>src/App.js</code>
-        </p>
-        <div className="links">
-          <a
-            href="https://mockbee.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Explore mockBee
-          </a>
-          <a
-            href="https://mockbee.netlify.app/docs/api/introduction"
-            target="_blank"
-            rel="noreferrer"
-          >
-            API Documentation
-          </a>
-          <a
-            href="https://github.com/neogcamp/mockBee"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contribute
-          </a>
-        </div>
-      </header>
-    </div>
+    // <div className="App">
+
+    <>
+      <PlaylistModal />
+      <Navbar />
+      {(() => {
+        if (currentPath !== '/login' && currentPath !== '/signup') {
+          console.log(currentPath, 'enter');
+          return <SideNavbar />;
+        }
+      })()}
+
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route
+          path="/watchlater"
+          element={
+            <RequiresAuth>
+              <WatchLater />
+            </RequiresAuth>
+          }
+        />
+        <Route path="/videolist" element={<VideoList />} />
+        <Route path="/Mockman" element={<Mockman />} />
+        <Route
+          path="/likedlist"
+          element={
+            <RequiresAuth>
+              <LikedList />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/playlist"
+          element={
+            <RequiresAuth>
+              <Playlist />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/playlist/:playlistId"
+          element={
+            <RequiresAuth>
+              <IndividualPlaylist />
+            </RequiresAuth>
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </>
+    // </div>
   );
 }
 
