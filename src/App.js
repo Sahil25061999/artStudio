@@ -7,8 +7,8 @@ import {
   VideoList,
   WatchLater,
   LikedList,
-  Playlist,
-  IndividualPlaylist,
+  // Playlist,
+  // IndividualPlaylist,
   Login,
   Signup,
 } from './pages/pages_index';
@@ -58,7 +58,7 @@ function App() {
             </RequiresAuth>
           }
         />
-        <Route
+        {/* <Route
           path="/playlist"
           element={
             <RequiresAuth>
@@ -73,7 +73,7 @@ function App() {
               <IndividualPlaylist />
             </RequiresAuth>
           }
-        />
+        /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

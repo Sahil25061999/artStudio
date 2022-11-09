@@ -1,36 +1,29 @@
 import React, { createContext, useContext, useEffect, useReducer } from 'react';
 import { useVideoList } from './videoListContext';
 
-const WatchLikeListContext = createContext();
+const WatchLaterContext = createContext();
 
 const reducerFunc = (state, action) => {
   switch (action.type) {
-    case 'WATCH_LATER':
-      return { ...state, watchLater: [...action.payload] };
-    case 'LIKED_VIDEOS':
-      return { ...state, likedList: [...action.payload] };
-    case 'PLAYLIST':
-      return { ...state, playlist: [...action.payload] };
+    case 'GET_WATCHLATER':
+    case 'ADD_TO_WATCHLATER':
+      return [...action.payload];
+    case 'REMOVE_FROM_WATCHLATER':
+      return;
     default:
-      return { ...state };
+      return [...state];
   }
 };
 
-export const WatchLikeListProvider = ({ children }) => {
-  const [watchLikeList, watchLikeListDispatch] = useReducer(reducerFunc, {
-    watchLater: [],
-    likedList: [],
-    playlist: [],
-  });
+export const WatchLaterProvider = ({ children }) => {
+  const [watchLaterList, dispatchWatchLater] = useReducer(reducerFunc, []);
 
-  // console.log(watchLikeList.watchLater, watchLikeList.likedList);
+  // console.log(watchLikeList.watchLaterList, watchLikeList.likedList);
   return (
-    <WatchLikeListContext.Provider
-      value={{ watchLikeList, watchLikeListDispatch }}
-    >
+    <WatchLaterContext.Provider value={{ watchLaterList, dispatchWatchLater }}>
       {children}
-    </WatchLikeListContext.Provider>
+    </WatchLaterContext.Provider>
   );
 };
 
-export const useWatchLikeList = () => useContext(WatchLikeListContext);
+export const useWatchLater = () => useContext(WatchLaterContext);

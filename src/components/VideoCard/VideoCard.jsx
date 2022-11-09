@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './VideoCard.css';
 import {
-  useWatchLikeList,
+  useWatchLater,
   usePlaylist,
   useVideoList,
   useLikedList,
@@ -13,7 +13,9 @@ import { useToken } from '../../hook/hook_index';
 export const VideoCard = ({ video }) => {
   const { videoInformation, setVideoInformation } = useVideoList();
   const { likedList, dispatchLikedList } = useLikedList();
+  const { watchLaterList, dispatchWatchLater } = useWatchLater();
   const [like, setLike] = useState(false);
+  const [watchLater, setWatchLater] = useState(false);
   const token = useToken();
   // const {
   //   watchLikeList: { watchLater, likedList },
@@ -41,6 +43,18 @@ export const VideoCard = ({ video }) => {
     // } catch (e) {
     //   console.error(e);
     // }
+    try {
+      const watchLaterResp = await axios.post('/api/user/watchlater', {
+        video,
+      });
+      console.log(watchLaterResp);
+      dispatchWatchLater({
+        type: 'ADD_TO_WATCHLATER',
+        payload: watchLaterResp.data.watchlater,
+      });
+    } catch (e) {
+      console.error(e);
+    }
   };
   const likedVideoBtn = async (e) => {
     // const currVidLikeState = likedList.some(({ _id }) => _id === video._id);
@@ -102,6 +116,9 @@ export const VideoCard = ({ video }) => {
 
   useEffect(() => {
     setLike(likedList.some(({ _id: currVidId }) => currVidId === video._id));
+    setWatchLater(
+      watchLaterList.some(({ _id: currVidId }) => currVidId === video._id)
+    );
   }, [likedList]);
   return (
     <div
@@ -142,7 +159,9 @@ export const VideoCard = ({ video }) => {
         </button>
         <button
           onClick={() => addToWatchLaterBtn()}
-          className="btn btn-only-icon btn-black"
+          className={`${
+            watchLater ? 'btn-like-active' : ''
+          } btn btn-only-icon btn-black`}
         >
           <span className="fas fa-clock"></span>
         </button>

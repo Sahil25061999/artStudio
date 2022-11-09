@@ -7,7 +7,7 @@ import {
   CategoryProvider,
   VideoListProvider,
   TokenProvider,
-  WatchLikeListProvider,
+  WatchLaterProvider,
   PlaylistProvider,
   AuthProvider,
   LikedListProvider,
@@ -22,7 +22,7 @@ ReactDOM.render(
       <AuthProvider>
         <TokenProvider>
           <LikedListProvider>
-            <WatchLikeListProvider>
+            <WatchLaterProvider>
               <PlaylistProvider>
                 <VideoListProvider>
                   <CategoryProvider>
@@ -30,7 +30,7 @@ ReactDOM.render(
                   </CategoryProvider>
                 </VideoListProvider>
               </PlaylistProvider>
-            </WatchLikeListProvider>
+            </WatchLaterProvider>
           </LikedListProvider>
         </TokenProvider>
       </AuthProvider>

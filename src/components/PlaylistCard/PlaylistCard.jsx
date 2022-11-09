@@ -6,15 +6,15 @@ import '../VideoCard/VideoCard.css';
 import './PlaylistCard.css';
 import {
   useToken,
-  useWatchLikeList,
+  // useWatchLikeList,
   usePlaylist,
 } from '../../context/context_index';
 
 export const PlaylistCard = ({ playlist }) => {
   const { token } = useToken();
-  const { watchLikeListDispatch } = useWatchLikeList();
+  // const { watchLikeListDispatch } = useWatchLikeList();
   const { dispatchPlaylistModal } = usePlaylist();
-
+  const watchLikeListDispatch = 0;
   //   const { thumbnailSrc, creator: channelName, title: videoTitle } = video;
   // console.log(playlist);
   return (

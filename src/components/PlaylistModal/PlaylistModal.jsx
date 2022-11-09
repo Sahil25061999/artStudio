@@ -4,7 +4,7 @@ import {
   usePlaylist,
   useToken,
   useVideoList,
-  useWatchLikeList,
+  useWatchLater,
 } from '../../context/context_index';
 
 import './PlaylistModal.css';
@@ -12,11 +12,13 @@ import './PlaylistModal.css';
 export const PlaylistModal = () => {
   const [title, setTitle] = useState('');
 
-  const {
-    watchLikeList: { playlist },
-    watchLikeListDispatch,
-  } = useWatchLikeList();
-  // const [playlist, setPlaylist] = useState([]);
+  // const {
+  //   watchLikeList: { playlist },
+  //   watchLikeListDispatch,
+  // } = useWatchLikeList();
+  /*Temp data */
+  const [useWatchLikeList, watchLikeListDispatch, playlist] = [0, 0, []];
+  /*         */
   const { clickedVideo, displayPlaylistModal, dispatchPlaylistModal } =
     usePlaylist();
   const { videoInformation, setVideoInformation } = useVideoList();
