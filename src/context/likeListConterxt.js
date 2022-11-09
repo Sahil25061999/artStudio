@@ -39,7 +39,6 @@ const reducerFuc = (state, action) => {
 
 export const LikedListProvider = ({ children }) => {
   const [likedList, dispatchLikedList] = useReducer(reducerFuc, []);
-  // const [like,setLike] = useState(false)
   const token = useToken();
 
   return (

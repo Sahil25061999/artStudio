@@ -5,6 +5,8 @@
   top: 0;
   bottom: 0;
   margin-bottom: 4rem;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+  backdrop-filter: blur(4px);
   /* padding-left: 5rem;
   padding-right: 5rem; */
 }
@@ -13,10 +15,10 @@
   color: var(--primary-text-color);
 }
 
-.search-container .textbox {
-  border-color: transparent;
-  background-color: rgba(48, 48, 48, 0.85);
-}
+/* .search-container .textbox { */
+/* border-color: transparent; */
+/* background-color: rgba(48, 48, 48, 0.85); */
+/* } */
 
 /* .navbar {
   display: grid;

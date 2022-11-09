@@ -12,13 +12,13 @@ import { useToken } from '../../hook/hook_index';
 
 export const VideoCard = ({ video }) => {
   const { videoInformation, setVideoInformation } = useVideoList();
-  const { dispatchLikedList } = useLikedList();
+  const { likedList, dispatchLikedList } = useLikedList();
   const [like, setLike] = useState(false);
   const token = useToken();
-  const {
-    watchLikeList: { watchLater, likedList },
-    watchLikeListDispatch,
-  } = useWatchLikeList();
+  // const {
+  //   watchLikeList: { watchLater, likedList },
+  //   watchLikeListDispatch,
+  // } = useWatchLikeList();
   const { dispatchPlaylistModal } = usePlaylist();
   const { thumbnailSrc, creator: channelName, title: videoTitle } = video;
 
@@ -76,15 +76,20 @@ export const VideoCard = ({ video }) => {
     // } catch (e) {
     //   console.error(e);
     // }
+
     try {
       const likeResp = await axios.post('/api/user/likes', { video });
       dispatchLikedList({ type: 'LIKE_VIDEO', payload: likeResp.data.likes });
-      setLike(!like);
-      setVideoInformation([
-        ...videoInformation,
-        { ...video, liked: !video.liked },
-      ]);
-      // console.log(likeResp);
+      // setLike(!like);
+
+      // setVideoInformation([
+      //   ...videoInformation.map((currVideo) => {
+      //     if (currVideo._id == video._id) {
+      //       return { ...video, liked: !video.liked };
+      //     }
+      //     return { ...currVideo };
+      //   }),
+      // ]);
     } catch (e) {
       console.error(e);
     }
@@ -95,6 +100,9 @@ export const VideoCard = ({ video }) => {
     dispatchPlaylistModal({ type: 'OPEN_MODAL', payload: video });
   };
 
+  useEffect(() => {
+    setLike(likedList.some(({ _id: currVidId }) => currVidId === video._id));
+  }, [likedList]);
   return (
     <div
       className="card video-card-container"
@@ -127,7 +135,7 @@ export const VideoCard = ({ video }) => {
         <button
           onClick={(e) => likedVideoBtn()}
           className={`${
-            video.liked ? 'btn-like-active ' : ''
+            like ? 'btn-like-active ' : ''
           }btn btn-only-icon btn-black`}
         >
           <span className="fas fa-heart"></span>
