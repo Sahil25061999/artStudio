@@ -7,7 +7,7 @@ import './WatchLater.css';
 
 export const WatchLater = () => {
   const { videoInformation } = useVideoList();
-  const { watchLaterList, dispatchWatchLater } = useWatchLater();
+  const { watchLaterList, setWatchLaterList } = useWatchLater();
   const token = useToken();
 
   useEffect(() => {
@@ -16,10 +16,7 @@ export const WatchLater = () => {
         const watchLaterResp = await axios.get('api/user/watchlater', {
           headers: { authorization: token },
         });
-        dispatchWatchLater({
-          type: 'GET_WATCH_LATER',
-          payload: watchLaterResp.data.watchlater,
-        });
+        setWatchLaterList(() => watchLaterResp.data.watchlater);
       } catch (e) {
         console.error(e);
       }

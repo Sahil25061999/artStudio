@@ -4,4 +4,4 @@ export { TokenProvider, useToken } from './tokenContext';
 export { WatchLaterProvider, useWatchLater } from './watchLaterContext';
 export { PlaylistProvider, usePlaylist } from './playlistContext';
 export { AuthProvider, useAuth } from './authContext';
-export { LikedListProvider, useLikedList } from './likeListConterxt';
+export { LikedListProvider, useLikedList } from './likeListContext';

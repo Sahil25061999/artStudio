@@ -1,26 +1,19 @@
-import React, { createContext, useContext, useEffect, useReducer } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from 'react';
 import { useVideoList } from './videoListContext';
 
 const WatchLaterContext = createContext();
 
-const reducerFunc = (state, action) => {
-  switch (action.type) {
-    case 'GET_WATCHLATER':
-    case 'ADD_TO_WATCHLATER':
-      return [...action.payload];
-    case 'REMOVE_FROM_WATCHLATER':
-      return;
-    default:
-      return [...state];
-  }
-};
-
 export const WatchLaterProvider = ({ children }) => {
-  const [watchLaterList, dispatchWatchLater] = useReducer(reducerFunc, []);
+  const [watchLaterList, setWatchLaterList] = useState([]);
 
-  // console.log(watchLikeList.watchLaterList, watchLikeList.likedList);
   return (
-    <WatchLaterContext.Provider value={{ watchLaterList, dispatchWatchLater }}>
+    <WatchLaterContext.Provider value={{ watchLaterList, setWatchLaterList }}>
       {children}
     </WatchLaterContext.Provider>
   );

@@ -38,7 +38,7 @@ export const LikedList = () => {
   //   });
   // }, [videoInformation]);
 
-  const { likedList, dispatchLikedList } = useLikedList();
+  const { likedList, setLikedList } = useLikedList();
 
   useEffect(() => {
     (async () => {
@@ -46,16 +46,11 @@ export const LikedList = () => {
         const likeListResp = await axios.get('/api/user/likes', {
           headers: { authorization: token },
         });
-        dispatchLikedList({
-          type: 'GET_LIKE_LIST',
-          payload: likeListResp.data.likes,
-        });
+        setLikedList(() => likeListResp.data.likes);
       } catch (e) {
         console.error(e);
       }
     })();
-    // dispatchLikedList({ type: 'GET_LIKE_LIST' });
-    // console.log(typeof likedList);
   }, []);
 
   return (

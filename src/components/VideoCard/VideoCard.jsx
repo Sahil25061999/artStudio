@@ -12,8 +12,9 @@ import { useToken } from '../../hook/hook_index';
 
 export const VideoCard = ({ video }) => {
   const { videoInformation, setVideoInformation } = useVideoList();
-  const { likedList, dispatchLikedList } = useLikedList();
-  const { watchLaterList, dispatchWatchLater } = useWatchLater();
+  const { likedList, setLikedList } = useLikedList();
+  const { watchLaterList, dispatchWatchLater, setWatchLaterList } =
+    useWatchLater();
   const [like, setLike] = useState(false);
   const [watchLater, setWatchLater] = useState(false);
   const token = useToken();
@@ -47,11 +48,8 @@ export const VideoCard = ({ video }) => {
       const watchLaterResp = await axios.post('/api/user/watchlater', {
         video,
       });
-      console.log(watchLaterResp);
-      dispatchWatchLater({
-        type: 'ADD_TO_WATCHLATER',
-        payload: watchLaterResp.data.watchlater,
-      });
+
+      setWatchLaterList(() => watchLaterResp.data.watchlater);
     } catch (e) {
       console.error(e);
     }
@@ -62,10 +60,7 @@ export const VideoCard = ({ video }) => {
       const removeWatchLaterResp = await axios.delete(
         `/api/user/watchlater/${video._id}`
       );
-      dispatchWatchLater({
-        type: 'ADD_TO_WATCHLATER',
-        payload: removeWatchLaterResp.data.watchlater,
-      });
+      setWatchLaterList(() => removeWatchLaterResp.data.watchlater);
     } catch (e) {
       console.error(e);
     }
@@ -107,7 +102,7 @@ export const VideoCard = ({ video }) => {
 
     try {
       const likeResp = await axios.post('/api/user/likes', { video });
-      dispatchLikedList({ type: 'LIKE_VIDEO', payload: likeResp.data.likes });
+      setLikedList(() => likeResp.data.likes);
       // setLike(!like);
 
       // setVideoInformation([
@@ -126,10 +121,7 @@ export const VideoCard = ({ video }) => {
   const dislikeVideoBtn = async (e) => {
     try {
       const dislikeResp = await axios.delete(`/api/user/likes/${video._id}`);
-      dispatchLikedList({
-        type: 'LIKE_VIDEO',
-        payload: dislikeResp.data.likes,
-      });
+      setLikedList(() => dislikeResp.data.likes);
     } catch (e) {
       console.error(e);
     }
