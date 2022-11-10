@@ -27,5 +27,9 @@
   border-radius: 0rem;
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(to top, black, transparent);
+  background-image: linear-gradient(
+    to top,
+    var(--secondary-bg-color),
+    transparent
+  );
 }
