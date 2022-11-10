@@ -119,7 +119,7 @@ export const VideoCard = ({ video }) => {
     setWatchLater(
       watchLaterList.some(({ _id: currVidId }) => currVidId === video._id)
     );
-  }, [likedList]);
+  }, [likedList, watchLaterList]);
   return (
     <div
       className="card video-card-container"
