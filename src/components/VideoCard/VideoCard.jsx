@@ -56,6 +56,20 @@ export const VideoCard = ({ video }) => {
       console.error(e);
     }
   };
+
+  const removeFromWatchLaterBtn = async () => {
+    try {
+      const removeWatchLaterResp = await axios.delete(
+        `/api/user/watchlater/${video._id}`
+      );
+      dispatchWatchLater({
+        type: 'ADD_TO_WATCHLATER',
+        payload: removeWatchLaterResp.data.watchlater,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
   const likedVideoBtn = async (e) => {
     // const currVidLikeState = likedList.some(({ _id }) => _id === video._id);
     // if (currVidLikeState) {
@@ -177,14 +191,21 @@ export const VideoCard = ({ video }) => {
           </button>
         )}
 
-        <button
-          onClick={() => addToWatchLaterBtn()}
-          className={`${
-            watchLater ? 'btn-like-active' : ''
-          } btn btn-only-icon btn-black`}
-        >
-          <span className="fas fa-clock"></span>
-        </button>
+        {watchLater ? (
+          <button
+            onClick={() => removeFromWatchLaterBtn()}
+            className="btn-like-active btn btn-only-icon btn-black"
+          >
+            <span className="fas fa-clock"></span>
+          </button>
+        ) : (
+          <button
+            onClick={() => addToWatchLaterBtn()}
+            className=" btn btn-only-icon btn-black"
+          >
+            <span className="fas fa-clock"></span>
+          </button>
+        )}
       </div>
     </div>
   );
