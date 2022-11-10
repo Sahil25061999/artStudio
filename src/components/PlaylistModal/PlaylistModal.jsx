@@ -2,11 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import {
   usePlaylist,
-  useToken,
   useVideoList,
   useWatchLater,
 } from '../../context/context_index';
-
+import { useToken } from '../../hook/hook_index';
 import './PlaylistModal.css';
 
 export const PlaylistModal = () => {
@@ -17,12 +16,18 @@ export const PlaylistModal = () => {
   //   watchLikeListDispatch,
   // } = useWatchLikeList();
   /*Temp data */
-  const [useWatchLikeList, watchLikeListDispatch, playlist] = [0, 0, []];
+  const [useWatchLikeList, watchLikeListDispatch] = [0, 0];
   /*         */
-  const { clickedVideo, displayPlaylistModal, dispatchPlaylistModal } =
-    usePlaylist();
+  const {
+    clickedVideo,
+    playlist,
+    displayPlaylistModal,
+    dispatchPlaylistModal,
+  } = usePlaylist();
   const { videoInformation, setVideoInformation } = useVideoList();
-  const { token } = useToken();
+  const token = useToken();
+
+  axios.defaults.headers.common['authorization'] = token;
 
   const handleNewPlaylistTitle = (e) => {
     setTitle(e.target.value);
@@ -31,18 +36,17 @@ export const PlaylistModal = () => {
   const createNewPlaylist = async (e) => {
     e.preventDefault();
     try {
-      const newPlayListResponse = await axios.post(
-        '/api/user/playlists',
-        { playlist: { title: title } },
-        {
-          headers: { authorization: token },
-        }
-      );
-
-      watchLikeListDispatch({
-        type: 'PLAYLIST',
+      const newPlayListResponse = await axios.post('/api/user/playlists', {
+        playlist: { title: title },
+      });
+      dispatchPlaylistModal({
+        type: 'CREATE_PLAYLIST',
         payload: newPlayListResponse.data.playlists,
       });
+      // watchLikeListDispatch({
+      //   type: 'PLAYLIST',
+      //   payload: newPlayListResponse.data.playlists,
+      // });
       // setPlaylist([...newPlayListResponse.data.playlists]);
     } catch (e) {
       console.error(e);
@@ -117,8 +121,7 @@ export const PlaylistModal = () => {
               ...clickedVideo,
               playlist: [...clickedVideo.playlist, e.target.id],
             },
-          },
-          { headers: { authorization: token } }
+          }
         );
 
         updatePlaylistChanges(playlistResponse, e.target.id, checked);
@@ -131,8 +134,7 @@ export const PlaylistModal = () => {
 
     try {
       const playlistResponse = await axios.delete(
-        `/api/user/playlists/${e.target.id}/${clickedVideo._id}`,
-        { headers: { authorization: token } }
+        `/api/user/playlists/${e.target.id}/${clickedVideo._id}`
       );
 
       updatePlaylistChanges(playlistResponse, e.target.id, checked);
@@ -144,13 +146,10 @@ export const PlaylistModal = () => {
   useEffect(() => {
     (async () => {
       try {
-        const playListResponse = await axios.get('/api/user/playlists', {
-          headers: { authorization: token },
-        });
-
-        watchLikeListDispatch({
-          type: 'PLAYLIST',
-          payload: playListResponse.data.playlists,
+        const playlistResponse = await axios.get('/api/user/playlists', {});
+        dispatchPlaylistModal({
+          type: 'CREATE_PLAYLIST',
+          payload: playlistResponse.data.playlists,
         });
       } catch (e) {
         console.error(e);

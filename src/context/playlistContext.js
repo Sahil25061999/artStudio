@@ -8,11 +8,15 @@ const reducerFunc = (state, action) => {
         clickedVideo: { ...action.payload },
         displayPlaylistModal: !state.displayPlaylistModal,
       };
+    case 'GET_PLAYLIST':
+    case 'CREATE_PLAYLIST':
+      return { ...state, playlist: [...action.payload] };
     case 'UPDATE_PLAYLIST':
       return {
         ...state,
         clickedVideo: { ...action.payload },
       };
+
     case 'CLOSE_MODAL':
       return { ...state, displayPlaylistModal: !state.displayPlaylistModal };
     default:
@@ -24,11 +28,22 @@ const PlaylistContext = createContext(null);
 
 export const PlaylistProvider = ({ children }) => {
   // const [displayPlaylistModal, setPlaylistModal] = useState(false);
-  const [{ clickedVideo, displayPlaylistModal }, dispatchPlaylistModal] =
-    useReducer(reducerFunc, { clickedVideo: {}, displayPlaylistModal: false });
+  const [
+    { playlist, clickedVideo, displayPlaylistModal },
+    dispatchPlaylistModal,
+  ] = useReducer(reducerFunc, {
+    playlist: [],
+    clickedVideo: {},
+    displayPlaylistModal: false,
+  });
   return (
     <PlaylistContext.Provider
-      value={{ dispatchPlaylistModal, clickedVideo, displayPlaylistModal }}
+      value={{
+        dispatchPlaylistModal,
+        playlist,
+        clickedVideo,
+        displayPlaylistModal,
+      }}
     >
       {children}
     </PlaylistContext.Provider>
