@@ -109,6 +109,18 @@ export const VideoCard = ({ video }) => {
     }
   };
 
+  const dislikeVideoBtn = async (e) => {
+    try {
+      const dislikeResp = await axios.delete(`/api/user/likes/${video._id}`);
+      dispatchLikedList({
+        type: 'LIKE_VIDEO',
+        payload: dislikeResp.data.likes,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const openPlaylistModal = () => {
     // dispatchPlaylistModal({ type: 'TOGGLE_MODAL' });
     dispatchPlaylistModal({ type: 'OPEN_MODAL', payload: video });
@@ -149,14 +161,22 @@ export const VideoCard = ({ video }) => {
           {/* Open */}
           <span className="fas fa-layer-group"></span>
         </button>
-        <button
-          onClick={(e) => likedVideoBtn()}
-          className={`${
-            like ? 'btn-like-active ' : ''
-          }btn btn-only-icon btn-black`}
-        >
-          <span className="fas fa-heart"></span>
-        </button>
+        {like ? (
+          <button
+            onClick={(e) => dislikeVideoBtn()}
+            className="btn-like-active btn btn-only-icon btn-black"
+          >
+            <span className="fas fa-heart"></span>
+          </button>
+        ) : (
+          <button
+            onClick={(e) => likedVideoBtn()}
+            className="btn btn-only-icon btn-black"
+          >
+            <span className="fas fa-heart"></span>
+          </button>
+        )}
+
         <button
           onClick={() => addToWatchLaterBtn()}
           className={`${
