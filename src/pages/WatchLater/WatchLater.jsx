@@ -38,7 +38,7 @@ export const WatchLater = () => {
   return (
     <div className="video-page">
       <div className="video-list-section ">
-        <div className="video-list-container">
+        <div className="list-container">
           {watchLaterList.length &&
             watchLaterList.map((item) => (
               <VideoCard key={item._id} video={item} />

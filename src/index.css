@@ -10,8 +10,8 @@
   --primary-bg-color: #f1f1f1;
   --secondary-bg-color: #0f0f0f;
 
-  --accent-color: red;
-  --hover-color: rgb(255, 4, 0);
+  --accent-color: rgb(255, 4, 0);
+  --hover-color: rgb(56, 59, 59);
   --modal-card-background-color: rgb(40, 40, 41);
 }
 

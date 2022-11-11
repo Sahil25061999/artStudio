@@ -2,7 +2,7 @@
   margin: 0;
   box-shadow: none;
   max-height: 15rem;
-  width: 20rem;
+  width: 20vw;
 
   color: var(--primary-text-color);
   position: relative;
@@ -51,15 +51,25 @@
 }
 /*      */
 
-.btn-black {
+.card-foot .btn-like-active {
+  color: var(--accent-color);
+}
+
+.card-action-btn {
+  color: var(--primary-text-color);
+  background-color: var(--modal-card-background-color);
+  padding: 8px;
   margin-right: 0.2rem;
 }
 
-.btn-black:hover {
+.card-action-btn:hover {
   box-shadow: none;
+  border: none;
+
+  /* filter: brightness(0%); */
   /* color: var(--primary-text-color); */
 }
 
-.card-foot .btn-like-active {
-  color: var(--accent-color);
+.card-action-btn:active {
+  transform: translateY(4px);
 }

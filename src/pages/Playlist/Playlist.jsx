@@ -29,7 +29,7 @@ export const Playlist = () => {
   return (
     <div className="video-page">
       <div className="video-list-section ">
-        <div className="video-list-container">
+        <div className="list-container">
           {playlist.length &&
             playlist.map((item) => <PlaylistCard playlist={item} />)}
         </div>

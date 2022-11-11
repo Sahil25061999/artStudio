@@ -161,7 +161,7 @@ export const VideoCard = ({ video }) => {
       <div className="card-foot">
         <button
           onClick={() => openPlaylistModal()}
-          className="btn btn-only-icon btn-black"
+          className="btn btn-only-icon  card-action-btn"
         >
           {/* Open */}
           <span className="fas fa-layer-group"></span>
@@ -169,14 +169,14 @@ export const VideoCard = ({ video }) => {
         {like ? (
           <button
             onClick={(e) => dislikeVideoBtn()}
-            className="btn-like-active btn btn-only-icon btn-black"
+            className="btn-like-active btn btn-only-icon card-action-btn "
           >
             <span className="fas fa-heart"></span>
           </button>
         ) : (
           <button
             onClick={(e) => likedVideoBtn()}
-            className="btn btn-only-icon btn-black"
+            className="btn btn-only-icon card-action-btn"
           >
             <span className="fas fa-heart"></span>
           </button>
@@ -185,14 +185,14 @@ export const VideoCard = ({ video }) => {
         {watchLater ? (
           <button
             onClick={() => removeFromWatchLaterBtn()}
-            className="btn-like-active btn btn-only-icon btn-black"
+            className="btn-like-active btn btn-only-icon card-action-btn"
           >
             <span className="fas fa-clock"></span>
           </button>
         ) : (
           <button
             onClick={() => addToWatchLaterBtn()}
-            className=" btn btn-only-icon btn-black"
+            className=" btn btn-only-icon card-action-btn"
           >
             <span className="fas fa-clock"></span>
           </button>

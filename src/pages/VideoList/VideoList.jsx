@@ -10,7 +10,7 @@ export const VideoList = () => {
     <div className="video-page">
       <div className="video-list-section">
         <h2>Trending Videos</h2>
-        <div className="video-list-container ">
+        <div className="list-container ">
           {videoInformation.map((item) => {
             return <VideoCard video={item} />;
           })}

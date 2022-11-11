@@ -56,7 +56,7 @@ export const LikedList = () => {
   return (
     <div className="video-page">
       <div className="video-list-section ">
-        <div className="video-list-container">
+        <div className="list-container">
           {likedList.length &&
             likedList.map((item) => <VideoCard video={item} />)}
         </div>

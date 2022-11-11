@@ -71,7 +71,7 @@ export const Homepage = () => {
         </div>
 
         <div
-          className="categories-container video-list-container"
+          className="categories-container list-container"
           ref={categoryContainer}
         >
           {categoryData.map(({ _id: id, imgSrc, categoryName }) => {
@@ -87,7 +87,7 @@ export const Homepage = () => {
       </div>
       <div className="trending-section video-list-section">
         <h2>Trending Videos</h2>
-        <div className="trending-video-container video-list-container">
+        <div className="trending-video-container list-container">
           {videoInformation.map((item) => {
             return <VideoCard key={item._id} video={item} />;
           })}

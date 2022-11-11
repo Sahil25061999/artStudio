@@ -57,11 +57,24 @@
   background-color: var(--secondary-bg-color);
 }
 
-.video-list-container {
+.list-container {
   margin: 1rem 0;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   gap: 1.8rem;
+}
+
+@media screen and (max-width: 95em) {
+  .video-list-container {
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .list-container {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
 }
