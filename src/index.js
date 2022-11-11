@@ -6,6 +6,7 @@ import { makeServer } from './server';
 import {
   CategoryProvider,
   VideoListProvider,
+  IndividualVideoProvider,
   TokenProvider,
   WatchLaterProvider,
   PlaylistProvider,
@@ -21,17 +22,19 @@ ReactDOM.render(
     <Router>
       <AuthProvider>
         <TokenProvider>
-          <LikedListProvider>
-            <WatchLaterProvider>
-              <PlaylistProvider>
-                <VideoListProvider>
-                  <CategoryProvider>
-                    <App />
-                  </CategoryProvider>
-                </VideoListProvider>
-              </PlaylistProvider>
-            </WatchLaterProvider>
-          </LikedListProvider>
+          <IndividualVideoProvider>
+            <LikedListProvider>
+              <WatchLaterProvider>
+                <PlaylistProvider>
+                  <VideoListProvider>
+                    <CategoryProvider>
+                      <App />
+                    </CategoryProvider>
+                  </VideoListProvider>
+                </PlaylistProvider>
+              </WatchLaterProvider>
+            </LikedListProvider>
+          </IndividualVideoProvider>
         </TokenProvider>
       </AuthProvider>
     </Router>

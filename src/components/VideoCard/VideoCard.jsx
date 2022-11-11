@@ -6,6 +6,7 @@ import {
   usePlaylist,
   useVideoList,
   useLikedList,
+  useIndividualVideo,
 } from '../../context/context_index';
 
 import { useToken } from '../../hook/hook_index';
@@ -13,15 +14,11 @@ import { useToken } from '../../hook/hook_index';
 export const VideoCard = ({ video }) => {
   const { videoInformation, setVideoInformation } = useVideoList();
   const { likedList, setLikedList } = useLikedList();
-  const { watchLaterList, dispatchWatchLater, setWatchLaterList } =
-    useWatchLater();
+  const { watchLaterList, setWatchLaterList } = useWatchLater();
+  const { currVideo, setCurrVideo } = useIndividualVideo();
   const [like, setLike] = useState(false);
   const [watchLater, setWatchLater] = useState(false);
   const token = useToken();
-  // const {
-  //   watchLikeList: { watchLater, likedList },
-  //   watchLikeListDispatch,
-  // } = useWatchLikeList();
   const { dispatchPlaylistModal } = usePlaylist();
   const { thumbnailSrc, creator: channelName, title: videoTitle } = video;
 
@@ -133,11 +130,13 @@ export const VideoCard = ({ video }) => {
   };
 
   useEffect(() => {
+    console.log(currVideo);
     setLike(likedList.some(({ _id: currVidId }) => currVidId === video._id));
     setWatchLater(
       watchLaterList.some(({ _id: currVidId }) => currVidId === video._id)
     );
   }, [likedList, watchLaterList]);
+
   return (
     <div
       className="card video-card-container"
