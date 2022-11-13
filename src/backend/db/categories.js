@@ -16,31 +16,31 @@ export const categories = [
   {
     _id: uuid(),
     categoryName: 'dance',
-    imgSrc: dance,
+    iconSrc: 'fa-music',
   },
   {
     _id: uuid(),
     categoryName: 'gaming',
-    imgSrc: gaming,
+    iconSrc: 'fa-music',
   },
   {
     _id: uuid(),
     categoryName: 'music',
-    imgSrc: music,
+    iconSrc: 'fa-music',
   },
   {
     _id: uuid(),
     categoryName: 'sport',
-    imgSrc: sport,
+    iconSrc: 'fa-music',
   },
   {
     _id: uuid(),
     categoryName: 'travel',
-    imgSrc: travel,
+    iconSrc: 'fa-music',
   },
   {
     _id: uuid(),
     categoryName: 'education',
-    imgSrc: education,
+    iconSrc: 'fa-music',
   },
 ];

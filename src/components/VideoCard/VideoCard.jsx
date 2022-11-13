@@ -158,7 +158,7 @@ export const VideoCard = ({ video }) => {
         <p className="card-subheading">{channelName}</p>
       </div>
       {/* <div className="card-content"></div> */}
-      <div className="card-foot">
+      <div className="card-foot video-card-foot">
         <button
           onClick={() => openPlaylistModal()}
           className="btn btn-only-icon  card-action-btn"
@@ -178,7 +178,7 @@ export const VideoCard = ({ video }) => {
             onClick={(e) => likedVideoBtn()}
             className="btn btn-only-icon card-action-btn"
           >
-            <span className="fas fa-heart"></span>
+            <span className="fa-solid fa-heart"></span>
           </button>
         )}
 

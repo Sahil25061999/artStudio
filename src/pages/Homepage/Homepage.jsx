@@ -25,22 +25,22 @@ export const Homepage = () => {
     categoryContainer.current.scrollLeft += scrollOffset;
   };
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await axios.post('/api/auth/login', {
-          email: 'adarshbalika@gmail.com',
-          password: 'adarshBalika123',
-        });
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const { data } = await axios.post('/api/auth/login', {
+  //         email: 'adarshbalika@gmail.com',
+  //         password: 'adarshBalika123',
+  //       });
 
-        localStorage.setItem('token', data.encodedToken);
-      } catch (e) {
-        console.error(e);
-      }
+  //       localStorage.setItem('token', data.encodedToken);
+  //     } catch (e) {
+  //       console.error(e);
+  //     }
 
-      // setToken(token)
-    })();
-  }, []);
+  //      setToken(token)
+  //   })();
+  // }, []);
 
   return (
     <div className="homepage-main">
@@ -50,8 +50,8 @@ export const Homepage = () => {
         <Carousel />
       </div>
       <div className="categories-section video-list-section">
-        <h2>Categories</h2>
-        <div className="btn-container">
+        {/* <h2>Categories</h2> */}
+        {/* <div className="btn-container">
           <button
             className="btn btn-float"
             onClick={() => handleHorizontalScroll(-scrollOffset)}
@@ -68,17 +68,14 @@ export const Homepage = () => {
         <div className="linear-gradient-container">
           <div className="left-gradient"></div>
           <div className="right-gradient"></div>
-        </div>
+        </div> */}
 
-        <div
-          className="categories-container list-container"
-          ref={categoryContainer}
-        >
-          {categoryData.map(({ _id: id, imgSrc, categoryName }) => {
+        <div className="categories-container" ref={categoryContainer}>
+          {categoryData.map(({ _id: id, iconSrc, categoryName }) => {
             return (
               <CategoryCard
                 key={id}
-                imgSrc={imgSrc}
+                iconSrc={iconSrc}
                 categoryName={categoryName}
               />
             );

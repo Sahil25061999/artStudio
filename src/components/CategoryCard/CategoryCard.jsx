@@ -1,17 +1,14 @@
 import React from 'react';
-import '../VideoCard/VideoCard.css';
 import './CategoryCard.css';
 
-export const CategoryCard = ({ imgSrc, categoryName }) => {
+export const CategoryCard = ({ iconSrc, categoryName }) => {
   return (
-    <div
-      className="card  category-card-container"
-      style={{
-        backgroundImage: ` url(${imgSrc}) `,
-      }}
-    >
+    <div className="category-card-container">
       <div className="card-head">
-        <h3 className="card-heading d-flex">{categoryName}</h3>
+        <h4 className="card-heading ">
+          <span className={`fa-solid ${iconSrc} padding-r-10`}> </span>
+          {categoryName}
+        </h4>
       </div>
     </div>
   );

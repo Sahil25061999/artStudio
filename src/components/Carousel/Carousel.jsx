@@ -5,7 +5,10 @@ import './Carousel.css';
 export const Carousel = () => {
   return (
     <div className="carousel-container">
-      <img className="carousel-bg-img" src={CarouselImage} alt="" />
+      <div className="carousel-image-container">
+        <img className="carousel-bg-img" src={CarouselImage} alt="" />
+      </div>
+
       <h1 className="carousel-video-title">
         Sand of times | Abstract art launch event.
       </h1>
