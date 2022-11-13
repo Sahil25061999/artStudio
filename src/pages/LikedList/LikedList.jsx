@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { VideoCard } from '../../components/components_index';
+import { VideoCard, VideoList } from '../../components/components_index';
 import {
   useVideoList,
   useWatchLikeList,
@@ -55,12 +55,10 @@ export const LikedList = () => {
 
   return (
     <div className="video-page">
-      <div className="video-list-section ">
-        <div className="list-container">
-          {likedList.length &&
-            likedList.map((item) => <VideoCard video={item} />)}
-        </div>
-      </div>
+      <VideoList>
+        {likedList.length &&
+          likedList.map((item) => <VideoCard video={item} />)}
+      </VideoList>
     </div>
   );
 };

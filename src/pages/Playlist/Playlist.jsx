@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import { PlaylistCard } from '../../components/components_index';
+import { PlaylistCard, VideoList } from '../../components/components_index';
 import { useVideoList, usePlaylist } from '../../context/context_index';
 import { useToken } from '../../hook/hook_index';
 
@@ -28,12 +28,10 @@ export const Playlist = () => {
 
   return (
     <div className="video-page">
-      <div className="video-list-section ">
-        <div className="list-container">
-          {playlist.length &&
-            playlist.map((item) => <PlaylistCard playlist={item} />)}
-        </div>
-      </div>
+      <VideoList>
+        {playlist.length &&
+          playlist.map((item) => <PlaylistCard playlist={item} />)}
+      </VideoList>
     </div>
   );
 };

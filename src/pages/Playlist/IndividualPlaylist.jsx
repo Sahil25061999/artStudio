@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { VideoCard } from '../../components/components_index';
+import { VideoCard, VideoList } from '../../components/components_index';
 import { usePlaylist, useVideoList } from '../../context/context_index';
 import { useToken } from '../../hook/hook_index';
 
@@ -35,12 +35,10 @@ export const IndividualPlaylist = () => {
 
   return (
     <div className="video-page">
-      <div className="video-list-section">
-        <div className="list-container">
-          {playlistVideoList.length &&
-            playlistVideoList.map((item) => <VideoCard video={item} />)}
-        </div>
-      </div>
+      <VideoList>
+        {playlistVideoList.length &&
+          playlistVideoList.map((item) => <VideoCard video={item} />)}
+      </VideoList>
     </div>
   );
 };

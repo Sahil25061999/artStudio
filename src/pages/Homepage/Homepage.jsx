@@ -4,6 +4,7 @@ import {
   Carousel,
   VideoCard,
   CategoryCard,
+  VideoList,
 } from '../../components/components_index';
 import {
   useCategory,
@@ -82,14 +83,11 @@ export const Homepage = () => {
           })}
         </div>
       </div>
-      <div className="trending-section video-list-section">
-        <h2>Trending Videos</h2>
-        <div className="trending-video-container list-container">
-          {videoInformation.map((item) => {
-            return <VideoCard key={item._id} video={item} />;
-          })}
-        </div>
-      </div>
+      <VideoList sectionTitle={'TrendingVideos'}>
+        {videoInformation.map((item) => {
+          return <VideoCard key={item._id} video={item} />;
+        })}
+      </VideoList>
     </div>
   );
 };

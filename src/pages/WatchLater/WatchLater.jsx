@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useVideoList, useWatchLater } from '../../context/context_index';
 import { useToken } from '../../hook/hook_index';
-import { VideoCard } from '../../components/components_index';
+import { VideoCard, VideoList } from '../../components/components_index';
 import './WatchLater.css';
 
 export const WatchLater = () => {
@@ -37,14 +37,12 @@ export const WatchLater = () => {
   }, [videoInformation]);
   return (
     <div className="video-page">
-      <div className="video-list-section ">
-        <div className="list-container">
-          {watchLaterList.length &&
-            watchLaterList.map((item) => (
-              <VideoCard key={item._id} video={item} />
-            ))}
-        </div>
-      </div>
+      <VideoList>
+        {watchLaterList.length &&
+          watchLaterList.map((item) => (
+            <VideoCard key={item._id} video={item} />
+          ))}
+      </VideoList>
     </div>
   );
 };

@@ -6,3 +6,4 @@ export { SideNavbar } from './SideNavbar/SideNavbar';
 export { PlaylistModal } from './PlaylistModal/PlaylistModal';
 export { PlaylistCard } from './PlaylistCard/PlaylistCard';
 export { RequiresAuth } from './RequiresAuth/RequiresAuth';
+export { VideoList } from './VideoList/VideoList';
