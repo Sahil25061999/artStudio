@@ -139,7 +139,7 @@ export const VideoCard = ({ video }) => {
 
   return (
     <div
-      className="card video-card-container"
+      className="video-card "
       // style={{
       //   backgroundImage: ` linear-gradient(to top,black,rgba(255,255,255,.2)),url(${thumbnailSrc})
       //   `,

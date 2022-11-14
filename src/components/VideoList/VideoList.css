@@ -16,20 +16,20 @@
 
 .list-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 20rem));
-  gap: 1.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
 }
 
-@media screen and (max-width: 1200px) {
+/* @media screen and (max-width: 1200px) {
   .list-container {
-    /* grid-template-columns: repeat(auto-fit, 260px); */
+    grid-template-columns: repeat(auto-fit, 260px);
     column-gap: 1rem;
   }
 }
 
 @media screen and (max-width: 940px) {
   .list-container {
-    /* grid-template-columns: repeat(auto-fit, minmax(250px, 20rem)); */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 20rem));
     gap: 1.85rem;
   }
-}
+} */

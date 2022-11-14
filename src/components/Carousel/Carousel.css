@@ -12,7 +12,7 @@
   max-height: 60vh;
   object-fit: cover;
   width: 100%;
-  aspect-ratio: 16/9;
+  /* aspect-ratio: 16/9; */
   border-radius: 1.2rem;
   margin-bottom: 1.2rem;
 }
