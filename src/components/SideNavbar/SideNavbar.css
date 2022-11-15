@@ -24,11 +24,7 @@
 .side-nav-list:hover {
   height: 100%;
   transform: translateX(0);
-  background-image: linear-gradient(
-    to right,
-    var(--secondary-bg-color),
-    transparent
-  );
+  background-image: linear-gradient(to right, black 40%, transparent);
 }
 .side-navbar:hover {
   width: 100%;
@@ -41,6 +37,32 @@
   justify-content: space-between;
   align-items: baseline;
   position: relative;
+  color: var(--inactive-nav-item, rgb(164, 164, 164));
+}
+
+.logout-btn {
+  width: 100%;
+  font-size: inherit;
+  background: none;
+  border: none;
+}
+
+.side-nav-icon {
+  position: relative;
+}
+.side-nav-item.active {
+  color: var(--primary-text-color);
+}
+
+.side-nav-item.active .side-nav-icon::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: -6.5px;
+  left: 0;
+
+  background-color: var(--accent-color);
 }
 
 .side-nav-text {
@@ -68,14 +90,6 @@
 
 .side-nav-item:hover::after {
   transform: scaleX(1);
-}
-
-.logout-btn {
-  width: 100%;
-  font-size: inherit;
-  background: none;
-  border: none;
-  color: var(--primary-text-color);
 }
 
 /* .logout-btn:hover {
@@ -106,7 +120,7 @@
   .side-nav-list:hover {
     /* height: 100%; */
     transform: translateX(0);
-    background-image: linear-gradient(to top, rgb(0, 0, 0), transparent);
+    background-image: linear-gradient(to top, rgb(0, 0, 0.8) 60%, transparent);
   }
 
   .side-navbar:hover {
@@ -117,6 +131,14 @@
     flex-direction: column-reverse;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .side-nav-item.active .side-nav-icon {
+    color: var(--accent-color);
+  }
+
+  .side-nav-item.active .side-nav-icon::after {
+    display: none;
   }
 
   .side-nav-icon {

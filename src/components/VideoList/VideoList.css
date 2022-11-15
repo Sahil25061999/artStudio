@@ -1,12 +1,11 @@
 .video-list-section {
   position: relative;
-  padding: 1rem 5rem;
+  padding-block: 1rem;
   color: var(--primary-text-color);
   background-color: var(--secondary-bg-color);
 }
 
 .list-container {
-  margin: 1rem 0;
   /* display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -15,6 +14,7 @@
 }
 
 .list-container {
+  margin: 1rem 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.2rem;

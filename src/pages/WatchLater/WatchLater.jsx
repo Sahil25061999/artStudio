@@ -36,7 +36,7 @@ export const WatchLater = () => {
     // });
   }, [videoInformation]);
   return (
-    <div className="video-page">
+    <div className="video-page app">
       <VideoList>
         {watchLaterList.length &&
           watchLaterList.map((item) => (

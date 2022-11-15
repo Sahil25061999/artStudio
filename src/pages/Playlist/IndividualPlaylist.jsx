@@ -34,7 +34,7 @@ export const IndividualPlaylist = () => {
   }, [playlist]);
 
   return (
-    <div className="video-page">
+    <div className="video-page app">
       <VideoList>
         {playlistVideoList.length &&
           playlistVideoList.map((item) => <VideoCard video={item} />)}

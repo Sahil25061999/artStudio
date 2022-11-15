@@ -44,7 +44,7 @@ export const Homepage = () => {
   // }, []);
 
   return (
-    <div className="homepage-main">
+    <div className="homepage-main app">
       {/* <PlaylistModal /> */}
       {/* <SideNavbar /> */}
       <div className="carousel-main-container">

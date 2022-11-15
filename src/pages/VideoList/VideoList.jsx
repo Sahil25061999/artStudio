@@ -7,7 +7,7 @@ import { useVideoList } from '../../context/context_index';
 export const VideoList = () => {
   const { videoInformation } = useVideoList();
   return (
-    <div className="video-page">
+    <div className="video-page app">
       <div className="video-list-section">
         <h2>Trending Videos</h2>
         <div className="list-container ">

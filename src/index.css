@@ -50,6 +50,7 @@
 body {
   position: relative;
   margin: 0;
+  /* padding-inline: 3rem; */
   background-color: var(--secondary-bg-color);
   color: var(--primary-text-color);
   overflow-x: hidden;
@@ -63,4 +64,10 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@media screen and (max-width) {
+  :root {
+    font-size: 10px;
+  }
 }

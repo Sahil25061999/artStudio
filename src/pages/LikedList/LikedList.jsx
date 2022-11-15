@@ -54,7 +54,7 @@ export const LikedList = () => {
   }, []);
 
   return (
-    <div className="video-page">
+    <div className="video-page app">
       <VideoList>
         {likedList.length &&
           likedList.map((item) => <VideoCard video={item} />)}
