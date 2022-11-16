@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // import { useToken } from '../../../context/context_index';
-import hero3 from '../../../assets/image/hero image/hero3.jpg';
+import hero3 from '../../../assets/image/hero image/hero3.webp';
 
 import '../Signup/signup.css';
 

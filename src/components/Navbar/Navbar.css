@@ -1,14 +1,16 @@
 .navbar {
-  backdrop-filter: none;
   z-index: 1000;
   position: fixed;
   top: 0;
   bottom: 0;
   margin-bottom: 4rem;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5) 60%,
+    transparent
+  );
+
   backdrop-filter: blur(4px);
-  /* padding-left: 5rem;
-  padding-right: 5rem; */
 }
 
 .navbar * {

@@ -1,15 +1,15 @@
 import { v4 as uuid } from 'uuid';
 
-import cardimage1 from '../../assets/image/videoCard/1.jpg';
-import cardimage2 from '../../assets/image/videoCard/2.jpg';
-import cardimage3 from '../../assets/image/videoCard/3.jpg';
-import cardimage4 from '../../assets/image/videoCard/4.jpg';
-import cardimage5 from '../../assets/image/videoCard/5.jpg';
-import cardimage6 from '../../assets/image/videoCard/6.jpg';
-import cardimage7 from '../../assets/image/videoCard/7.jpg';
-import cardimage8 from '../../assets/image/videoCard/8.jpg';
-import cardimage9 from '../../assets/image/videoCard/9.jpg';
-import cardimage10 from '../../assets/image/videoCard/10.jpg';
+import cardimage1 from '../../assets/image/videoCard/1.webp';
+import cardimage2 from '../../assets/image/videoCard/2.webp';
+import cardimage3 from '../../assets/image/videoCard/3.webp';
+import cardimage4 from '../../assets/image/videoCard/4.webp';
+import cardimage5 from '../../assets/image/videoCard/5.webp';
+import cardimage6 from '../../assets/image/videoCard/6.webp';
+import cardimage7 from '../../assets/image/videoCard/7.webp';
+import cardimage8 from '../../assets/image/videoCard/8.webp';
+import cardimage9 from '../../assets/image/videoCard/9.webp';
+import cardimage10 from '../../assets/image/videoCard/10.webp';
 
 /**
  * Videos Database can be added here.

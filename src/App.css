@@ -23,4 +23,5 @@
 
 .app {
   padding-inline: 5rem;
+  transition-timing-function: ease-in;
 }

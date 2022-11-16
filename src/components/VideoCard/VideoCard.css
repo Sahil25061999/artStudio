@@ -1,10 +1,11 @@
 .video-card {
   margin: 0;
   box-shadow: none;
+
   /* max-height: 15rem; */
   /* width: 20rem; */
   /* height: fit-content; */
-
+  /* max-width: min(20rem, 100%); */
   width: 100%;
   color: var(--primary-text-color);
   position: relative;
@@ -99,4 +100,15 @@
   .video-card-container .card-content {
     padding: 0;
   }
+} */
+
+/* @media screen and (min-width: 1300px) {
+  .video-card {
+    max-width: 25rem;
+  }
+} */
+
+/* .video-card:first-child,
+.video-card:nth-child(2) {
+  max-width: 24rem;
 } */

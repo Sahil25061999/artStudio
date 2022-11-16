@@ -4,7 +4,6 @@
 .signup-page {
   overflow: hidden;
   height: 100vh;
-
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
@@ -91,4 +90,16 @@
 
 .signup-btn:hover {
   box-shadow: 2px 6px 16px rgba(255, 4, 0, 0.504);
+}
+
+@media screen and (max-width: 864px) {
+  .signup-page {
+    grid-template-columns: 1fr;
+  }
+  .hero-section {
+    display: none;
+  }
+  .form-section {
+    grid-column: 1;
+  }
 }
