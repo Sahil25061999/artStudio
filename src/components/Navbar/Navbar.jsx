@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Search } from '../components_index';
 import './Navbar.css';
 
 export const Navbar = () => {
@@ -14,7 +15,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <header className="navbar ">
+      <header className="navigation ">
         <div className="logo-container ">
           <h2 className="title">
             Art<span className="title-studio">Studio</span>
@@ -23,38 +24,23 @@ export const Navbar = () => {
         {(() => {
           if (currentPath !== '/login' && currentPath !== '/signup') {
             return (
-              <>
-                <div className="search-container">
-                  <input className="textbox" type="text" />
-                  <button className="btn btn-only-icon btn-square search-btn">
-                    <span className="fa-solid fa-magnifying-glass"></span>
-                  </button>
-                </div>
-                <nav className="navbar-menu">
-                  <ul className="navbar-list list-style-none">
-                    <li className="navbar-item">
-                      <a href="#" className="navbar-link btn ">
-                        home
-                      </a>
-                    </li>
-                    <li className="navbar-item">
-                      <a href="#" className="navbar-link btn">
-                        login
-                      </a>
-                    </li>
-                    <li className="navbar-item">
-                      <a href="#" className="navbar-link btn">
-                        signup
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-              </>
+              <nav className="navigation-menu">
+                <ul className="navigation-list list-style-none d-flex">
+                  <li className="navigation-item">
+                    <Search />
+                  </li>
+                  <li className="navigation-item">
+                    <a href="#" className="navigation-link btn">
+                      signup
+                    </a>
+                  </li>
+                </ul>
+              </nav>
             );
           }
         })()}
       </header>
-      <header className="navbar navbar-responsive">
+      {/* <header className="navigation navigation-responsive">
         <div className="logo-container">
           <h2>Navbar</h2>
         </div>
@@ -62,32 +48,32 @@ export const Navbar = () => {
           <span className="fa-solid fa-bars"></span>
         </button>
         <nav
-          className="navbar-menu"
+          className="navigation-menu"
           style={
             drawerClicked && !drawerClose
               ? { transform: 'translateX(0%)' }
               : { transform: 'translateX(120%)' }
           }
         >
-          <ul className="navbar-list list-style-none">
-            <li className="navbar-item">
+          <ul className="navigation-list list-style-none">
+            <li className="navigation-item">
               <input className="textbox" type="text" />
               <button className="btn btn-only-icon btn-square">
                 <span className="fa-solid fa-magnifying-glass"></span>
               </button>
             </li>
-            <li className="navbar-item">Home</li>
-            <li className="navbar-item">Like</li>
-            <li className="navbar-item">Watch later</li>
+            <li className="navigation-item">Home</li>
+            <li className="navigation-item">Like</li>
+            <li className="navigation-item">Watch later</li>
             <li
-              className="navbar-item drawer-close-btn"
+              className="navigation-item drawer-close-btn"
               onClick={() => handleDrawer()}
             >
               close
             </li>
           </ul>
         </nav>
-      </header>
+      </header> */}
     </>
   );
 };

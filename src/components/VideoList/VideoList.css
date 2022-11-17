@@ -5,13 +5,13 @@
   background-color: var(--secondary-bg-color);
 }
 
-.list-container {
-  /* display: flex;
+/* .list-container { */
+/* display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
     gap: 1.8rem; */
-}
+/* } */
 
 .list-container {
   margin: 1rem 0;
