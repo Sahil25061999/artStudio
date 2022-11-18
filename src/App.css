@@ -25,3 +25,9 @@
   padding-inline: 5rem;
   transition-timing-function: ease-in;
 }
+
+@media screen and (max-width: 524px) {
+  .app {
+    padding-inline: 2rem;
+  }
+}
