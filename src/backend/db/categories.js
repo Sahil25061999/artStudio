@@ -1,11 +1,11 @@
 import { v4 as uuid } from 'uuid';
 
-import dance from '../../assets/image/categorycard/dance.jpg';
-import gaming from '../../assets/image/categorycard/gaming.jpg';
-import music from '../../assets/image/categorycard/music.jpg';
-import sport from '../../assets/image/categorycard/sport.jpg';
-import travel from '../../assets/image/categorycard/travel.jpg';
-import education from '../../assets/image/categorycard/education.jpg';
+// import dance from '../../assets/image/categorycard/dance.jpg';
+// import gaming from '../../assets/image/categorycard/gaming.jpg';
+// import music from '../../assets/image/categorycard/music.jpg';
+// import sport from '../../assets/image/categorycard/sport.jpg';
+// import travel from '../../assets/image/categorycard/travel.jpg';
+// import education from '../../assets/image/categorycard/education.jpg';
 
 /**
  * Category Database can be added here.
