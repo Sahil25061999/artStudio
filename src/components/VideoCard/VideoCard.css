@@ -11,6 +11,7 @@
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
 
   /* display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -18,6 +19,10 @@
   /* aspect-ratio: 16/9; */
   /* aspect-ratio: 3/2; */
   /* margin: 0.5rem; */
+}
+
+.video-card:hover {
+  cursor: pointer;
 }
 
 .video-card .card-head {
@@ -46,14 +51,16 @@
   /* height: 65%; */
   /* grid-column: 1 / span 3; */
   height: 12rem;
-
-  /* aspect-ratio: 16/9; */
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  aspect-ratio: 16/9;
 }
 
 /* Added later */
-.video-card-image {
+/* .video-card-image {
   border-radius: 0.5rem;
-}
+} */
 /*      */
 
 .card-foot .btn-like-active {
@@ -87,6 +94,14 @@
 .card-action-btn:active {
   transform: translateY(4px);
 }
+/* 
+.delete-btn {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  box-shadow: 1px 2px 2px rgb(24, 22, 22);
+  background-color: var(--modal-card-background-color);
+} */
 
 /* 
 

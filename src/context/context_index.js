@@ -6,3 +6,4 @@ export { PlaylistProvider, usePlaylist } from './playlistContext';
 export { AuthProvider, useAuth } from './authContext';
 export { LikedListProvider, useLikedList } from './likeListContext';
 export { IndividualVideoProvider, useIndividualVideo } from './videoContext';
+export { HistoryProvider, useHistory } from './historyContext';

@@ -12,6 +12,7 @@ import {
   PlaylistProvider,
   AuthProvider,
   LikedListProvider,
+  HistoryProvider,
 } from './context/context_index';
 import { BrowserRouter as Router } from 'react-router-dom';
 // Call make Server
@@ -23,17 +24,19 @@ ReactDOM.render(
       <AuthProvider>
         <TokenProvider>
           <IndividualVideoProvider>
-            <LikedListProvider>
-              <WatchLaterProvider>
-                <PlaylistProvider>
-                  <VideoListProvider>
-                    <CategoryProvider>
-                      <App />
-                    </CategoryProvider>
-                  </VideoListProvider>
-                </PlaylistProvider>
-              </WatchLaterProvider>
-            </LikedListProvider>
+            <HistoryProvider>
+              <LikedListProvider>
+                <WatchLaterProvider>
+                  <PlaylistProvider>
+                    <VideoListProvider>
+                      <CategoryProvider>
+                        <App />
+                      </CategoryProvider>
+                    </VideoListProvider>
+                  </PlaylistProvider>
+                </WatchLaterProvider>
+              </LikedListProvider>
+            </HistoryProvider>
           </IndividualVideoProvider>
         </TokenProvider>
       </AuthProvider>

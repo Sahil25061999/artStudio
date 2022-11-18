@@ -11,6 +11,7 @@ import {
   IndividualPlaylist,
   Login,
   Signup,
+  History,
 } from './pages/pages_index';
 import {
   Navbar,
@@ -45,6 +46,14 @@ function App() {
           element={
             <RequiresAuth>
               <WatchLater />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <RequiresAuth>
+              <History />
             </RequiresAuth>
           }
         />

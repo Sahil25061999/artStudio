@@ -1,11 +1,11 @@
-/* .search-container {
-  width: 50%;
-} */
+.search-container .textbox {
+  /* width: 50%; */
+}
 
 .search-btn {
   border-radius: 0.5rem;
   padding: 0.5rem 0.62rem;
-  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.5); */
   margin-inline: 0.2rem 0.5rem;
   /* background-color: rgba(255, 255, 255, 0.1); */
   backdrop-filter: blur(8px);

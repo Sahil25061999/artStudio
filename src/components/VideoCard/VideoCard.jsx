@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 import './VideoCard.css';
 import {
   useWatchLater,
@@ -7,6 +9,7 @@ import {
   useVideoList,
   useLikedList,
   useIndividualVideo,
+  useHistory,
 } from '../../context/context_index';
 
 import { useToken } from '../../hook/hook_index';
@@ -14,6 +17,7 @@ import { useToken } from '../../hook/hook_index';
 export const VideoCard = ({ video }) => {
   const { videoInformation, setVideoInformation } = useVideoList();
   const { likedList, setLikedList } = useLikedList();
+  const { historyList, setHistoryList } = useHistory();
   const { watchLaterList, setWatchLaterList } = useWatchLater();
   const { currVideo, setCurrVideo } = useIndividualVideo();
   const [like, setLike] = useState(false);
@@ -21,6 +25,7 @@ export const VideoCard = ({ video }) => {
   const token = useToken();
   const { dispatchPlaylistModal } = usePlaylist();
   const { thumbnailSrc, creator: channelName, title: videoTitle } = video;
+  const navigate = useNavigate();
 
   axios.defaults.headers.common['authorization'] = token;
 
@@ -129,6 +134,16 @@ export const VideoCard = ({ video }) => {
     dispatchPlaylistModal({ type: 'OPEN_MODAL', payload: video });
   };
 
+  const handleVideoClick = async () => {
+    console.log('uo');
+    try {
+      const historyResp = await axios.post('/api/user/history', { video });
+      setHistoryList(() => historyResp.data.history);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   useEffect(() => {
     console.log(currVideo);
     setLike(likedList.some(({ _id: currVidId }) => currVidId === video._id));
@@ -140,11 +155,15 @@ export const VideoCard = ({ video }) => {
   return (
     <div
       className="video-card "
+      onClick={handleVideoClick}
       // style={{
       //   backgroundImage: ` linear-gradient(to top,black,rgba(255,255,255,.2)),url(${thumbnailSrc})
       //   `,
       // }}
     >
+      <button className="btn btn-only-icon card-action-btn  delete-btn">
+        <span className="fa-solid fa-trash "></span>
+      </button>
       <div className="card-image-container">
         <img
           className="card-image video-card-image"
@@ -160,7 +179,10 @@ export const VideoCard = ({ video }) => {
       {/* <div className="card-content"></div> */}
       <div className="card-foot video-card-foot">
         <button
-          onClick={() => openPlaylistModal()}
+          onClick={(e) => {
+            e.stopPropagation();
+            openPlaylistModal();
+          }}
           className="btn btn-only-icon  card-action-btn"
         >
           {/* Open */}
@@ -168,14 +190,20 @@ export const VideoCard = ({ video }) => {
         </button>
         {like ? (
           <button
-            onClick={(e) => dislikeVideoBtn()}
+            onClick={(e) => {
+              e.stopPropagation();
+              dislikeVideoBtn();
+            }}
             className="btn-like-active btn btn-only-icon card-action-btn "
           >
             <span className="fas fa-heart"></span>
           </button>
         ) : (
           <button
-            onClick={(e) => likedVideoBtn()}
+            onClick={(e) => {
+              e.stopPropagation();
+              likedVideoBtn();
+            }}
             className="btn btn-only-icon card-action-btn"
           >
             <span className="fa-solid fa-heart"></span>
@@ -184,14 +212,20 @@ export const VideoCard = ({ video }) => {
 
         {watchLater ? (
           <button
-            onClick={() => removeFromWatchLaterBtn()}
+            onClick={(e) => {
+              e.stopPropagation();
+              removeFromWatchLaterBtn();
+            }}
             className="btn-like-active btn btn-only-icon card-action-btn"
           >
             <span className="fas fa-clock"></span>
           </button>
         ) : (
           <button
-            onClick={() => addToWatchLaterBtn()}
+            onClick={(e) => {
+              e.stopPropagation();
+              addToWatchLaterBtn();
+            }}
             className=" btn btn-only-icon card-action-btn"
           >
             <span className="fas fa-clock"></span>

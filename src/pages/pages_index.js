@@ -7,3 +7,4 @@ export { IndividualPlaylist } from './Playlist/IndividualPlaylist';
 export { LoadingPage } from './LoadingPage/LoadingPage';
 export { Login } from './Authentication/Login/Login';
 export { Signup } from './Authentication/Signup/Signup';
+export { History } from './History/History';
