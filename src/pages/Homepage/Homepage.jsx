@@ -50,6 +50,7 @@ export const Homepage = () => {
       <div className="carousel-main-container">
         <Carousel />
       </div>
+      <h2>Explore Now</h2>
       <div className="categories-section video-list-section">
         {/* <h2>Categories</h2> */}
         {/* <div className="btn-container">
@@ -83,7 +84,7 @@ export const Homepage = () => {
           })}
         </div>
       </div>
-      <VideoList sectionTitle={'TrendingVideos'}>
+      <VideoList sectionTitle={'Explore Now'}>
         {videoInformation.map((item) => {
           return <VideoCard key={item._id} video={item} />;
         })}

@@ -4,9 +4,17 @@
   justify-content: center;
   cursor: pointer;
   margin: 0.5rem;
-
-  border-radius: 1.2rem;
+  border-radius: 0.5rem;
   background-color: var(--modal-card-background-color);
+}
+
+.category-card-container .card-head {
+  padding-inline: 0.8rem;
+}
+
+.category-card-container p {
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .category-card-container:hover {

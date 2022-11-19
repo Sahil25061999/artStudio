@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import './VideoCard.css';
 import {
@@ -26,8 +26,11 @@ export const VideoCard = ({ video }) => {
   const { dispatchPlaylistModal } = usePlaylist();
   const { thumbnailSrc, creator: channelName, title: videoTitle } = video;
   const navigate = useNavigate();
+  const location = useLocation();
 
   axios.defaults.headers.common['authorization'] = token;
+
+  console.log(location);
 
   const addToWatchLaterBtn = async () => {
     // try {
@@ -135,10 +138,21 @@ export const VideoCard = ({ video }) => {
   };
 
   const handleVideoClick = async () => {
-    console.log('uo');
     try {
       const historyResp = await axios.post('/api/user/history', { video });
       setHistoryList(() => historyResp.data.history);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      const deleteHistoryResp = await axios.delete(
+        `/api/user/history/${video._id}`
+      );
+      console.log(deleteHistoryResp);
+      setHistoryList(() => deleteHistoryResp.data.history);
     } catch (e) {
       console.error(e);
     }
@@ -161,9 +175,6 @@ export const VideoCard = ({ video }) => {
       //   `,
       // }}
     >
-      <button className="btn btn-only-icon card-action-btn  delete-btn">
-        <span className="fa-solid fa-trash "></span>
-      </button>
       <div className="card-image-container">
         <img
           className="card-image video-card-image"
@@ -173,63 +184,77 @@ export const VideoCard = ({ video }) => {
         />
       </div>
       <div className="card-head">
-        <h3 className="card-heading ">{videoTitle}</h3>
-        <p className="card-subheading">{channelName}</p>
+        <h4 className="card-heading ">{videoTitle}</h4>
+        <p className="vide-card-subheading">{channelName}</p>
       </div>
       {/* <div className="card-content"></div> */}
       <div className="card-foot video-card-foot">
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            openPlaylistModal();
-          }}
-          className="btn btn-only-icon  card-action-btn"
-        >
-          {/* Open */}
-          <span className="fas fa-layer-group"></span>
-        </button>
-        {like ? (
+        <div>
           <button
             onClick={(e) => {
               e.stopPropagation();
-              dislikeVideoBtn();
+              openPlaylistModal();
             }}
-            className="btn-like-active btn btn-only-icon card-action-btn "
+            className="btn btn-only-icon  card-action-btn"
           >
-            <span className="fas fa-heart"></span>
+            {/* Open */}
+            <span className="fas fa-layer-group"></span>
+          </button>
+          {like ? (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                dislikeVideoBtn();
+              }}
+              className="btn-like-active btn btn-only-icon card-action-btn "
+            >
+              <span className="fas fa-thumbs-up"></span>
+            </button>
+          ) : (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                likedVideoBtn();
+              }}
+              className="btn btn-only-icon card-action-btn"
+            >
+              <span className="fas fa-thumbs-up"></span>
+            </button>
+          )}
+          {watchLater ? (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                removeFromWatchLaterBtn();
+              }}
+              className="btn-like-active btn btn-only-icon card-action-btn"
+            >
+              <span className="fas fa-clock"></span>
+            </button>
+          ) : (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                addToWatchLaterBtn();
+              }}
+              className=" btn btn-only-icon card-action-btn"
+            >
+              <span className="fas fa-clock"></span>
+            </button>
+          )}
+        </div>
+        {location.pathname === '/history' ? (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleDelete();
+            }}
+            className="btn btn-only-icon card-action-btn  delete-btn"
+          >
+            <span className="fa-solid fa-trash "></span>
           </button>
         ) : (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              likedVideoBtn();
-            }}
-            className="btn btn-only-icon card-action-btn"
-          >
-            <span className="fa-solid fa-heart"></span>
-          </button>
-        )}
-
-        {watchLater ? (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              removeFromWatchLaterBtn();
-            }}
-            className="btn-like-active btn btn-only-icon card-action-btn"
-          >
-            <span className="fas fa-clock"></span>
-          </button>
-        ) : (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              addToWatchLaterBtn();
-            }}
-            className=" btn btn-only-icon card-action-btn"
-          >
-            <span className="fas fa-clock"></span>
-          </button>
+          ''
         )}
       </div>
     </div>

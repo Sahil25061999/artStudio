@@ -5,10 +5,10 @@ export const CategoryCard = ({ iconSrc, categoryName }) => {
   return (
     <div className="category-card-container">
       <div className="card-head">
-        <h4 className="card-heading ">
-          <span className={`fa-solid ${iconSrc} padding-r-10`}> </span>
+        <p className="video-card-heading ">
+          {/* <span className={`fa-solid ${iconSrc} padding-r-10`}> </span> */}
           {categoryName}
-        </h4>
+        </p>
       </div>
     </div>
   );

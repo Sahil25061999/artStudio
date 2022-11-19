@@ -17,6 +17,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: sticky;
+  top: 4rem;
+  z-index: 2;
 }
 
 /* .btn-container,

@@ -66,8 +66,8 @@ code {
     monospace;
 }
 
-@media screen and (max-width) {
-  :root {
+@media screen and (max-width: 524px) {
+  body {
     font-size: 10px;
   }
 }
