@@ -1,12 +1,12 @@
 import React, { createContext, useContext, useReducer, useState } from 'react';
 import axios from 'axios';
-import { useToken } from '../hook/hook_index';
+import { getToken } from '../utils/utils_index';
 
 const LikedListContext = createContext([]);
 
 export const LikedListProvider = ({ children }) => {
   const [likedList, setLikedList] = useState([]);
-  const token = useToken();
+  const token = getToken();
 
   return (
     <LikedListContext.Provider value={{ likedList, setLikedList }}>

@@ -1,0 +1,22 @@
+.video-card-single {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr min-content;
+}
+
+.video-card-single .card-video-container {
+  grid-column: 1 / span 2;
+  height: 65vmin;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  border-radius: 0.5rem;
+}
+
+.video-card-single .card-head {
+  grid-column: 1;
+}
+
+.video-card-single .video-card-foot {
+  grid-column: 2;
+}

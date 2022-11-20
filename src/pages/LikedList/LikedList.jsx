@@ -6,12 +6,12 @@ import {
   useWatchLikeList,
   useLikedList,
 } from '../../context/context_index';
-import { useToken } from '../../hook/hook_index';
+import { getToken } from '../../utils/utils_index';
 
 export const LikedList = () => {
   // const { videoInformation } = useVideoList();
 
-  const token = useToken();
+  const token = getToken();
 
   // const {
   //   watchLikeList: { likedList },

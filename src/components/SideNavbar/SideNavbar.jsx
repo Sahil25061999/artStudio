@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/context_index';
-import { useToken } from '../../hook/hook_index';
+import { getToken } from '../../utils/utils_index';
 import './SideNavbar.css';
 
 export const SideNavbar = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
-  const token = useToken();
+  const token = getToken();
   useEffect(() => {
     token?.length ? setIsLoggedIn(true) : setIsLoggedIn(false);
   }, []);

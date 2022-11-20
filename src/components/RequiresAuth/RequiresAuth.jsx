@@ -1,8 +1,8 @@
 import { useLocation, Navigate } from 'react-router-dom';
-import { useToken } from '../../hook/hook_index';
+import { getToken } from '../../utils/utils_index';
 
 export const RequiresAuth = ({ children }) => {
-  const token = useToken();
+  const token = getToken();
   const location = useLocation();
   return token?.length ? (
     children

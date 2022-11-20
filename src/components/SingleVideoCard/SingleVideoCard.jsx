@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
-
-import './VideoCard.css';
 import {
   useWatchLater,
   usePlaylist,
@@ -11,20 +9,28 @@ import {
   useCurrVideo,
   useHistory,
 } from '../../context/context_index';
-import { addToWatchLater } from '../../api-call/api-call_index';
 import { getToken } from '../../utils/utils_index';
+import './SingleVideoCard.css';
 
-export const VideoCard = ({ video }) => {
+export const SingleVideoCard = ({ video }) => {
+  const {
+    thumbnailSrc,
+    creator: channelName,
+    title: videoTitle,
+    liked,
+    watchlater,
+  } = video;
+
   const { videoInformation, setVideoInformation } = useVideoList();
   const { likedList, setLikedList } = useLikedList();
   const { historyList, setHistoryList } = useHistory();
   const { watchLaterList, setWatchLaterList } = useWatchLater();
   const { currVideo, setCurrVideo } = useCurrVideo();
-  const [like, setLike] = useState(false);
-  const [watchLater, setWatchLater] = useState(false);
+  const [like, setLike] = useState(liked);
+  const [watchLater, setWatchLater] = useState(watchlater);
   const token = getToken();
   const { dispatchPlaylistModal } = usePlaylist();
-  const { thumbnailSrc, creator: channelName, title: videoTitle } = video;
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -116,29 +122,32 @@ export const VideoCard = ({ video }) => {
     );
   }, [likedList, watchLaterList]);
 
-  useEffect(() => {
-    setCurrVideo({ ...video, liked: like, watchlater: watchLater });
-  }, [like, watchLater]);
+  //   useEffect(() => {
+  //     setCurrVideo({ ...video, liked: like, watchlater: watchLater });
+  //   }, [like, watchLater]);
 
   return (
     <div
-      className="video-card "
-      onClick={handleVideoClick}
-      // style={{
-      //   backgroundImage: ` linear-gradient(to top,black,rgba(255,255,255,.2)),url(${thumbnailSrc})
-      //   `,
-      // }}
+      className=" video-card-single"
+      // onClick={handleVideoClick}
     >
-      <div className="card-image-container">
-        <img
-          className="card-image video-card-image"
-          src={thumbnailSrc}
-          alt="product-image"
-          loading="lazy"
-        />
+      <div className="card-video-container">
+        {/* <img
+      className="card-image video-card-image"
+      src={thumbnailSrc}
+      alt="product-image"
+      loading="lazy"
+    /> */}
+        <iframe
+          src="https://www.youtube.com/embed/Qt0ZrQWtQGg"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
       </div>
       <div className="card-head">
-        <h4 className="card-heading ">{videoTitle}</h4>
+        <h2 className="card-heading ">{videoTitle}</h2>
         <p className="vide-card-subheading">{channelName}</p>
       </div>
       {/* <div className="card-content"></div> */}
@@ -197,19 +206,6 @@ export const VideoCard = ({ video }) => {
             </button>
           )}
         </div>
-        {location.pathname === '/history' ? (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              handleDelete();
-            }}
-            className="btn btn-only-icon card-action-btn  delete-btn"
-          >
-            <span className="fa-solid fa-trash "></span>
-          </button>
-        ) : (
-          ''
-        )}
       </div>
     </div>
   );

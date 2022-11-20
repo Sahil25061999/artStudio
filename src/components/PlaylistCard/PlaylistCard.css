@@ -10,26 +10,13 @@
   height: 100%;
 }
 
-.playlist-card-head,
-.playlist-card-foot {
-  z-index: 1;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  align-self: end;
-}
-.playlist-card-foot {
-  margin-bottom: 0;
+.playlist-bottom-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.gradient-container {
-  z-index: 1;
-  position: absolute;
-  border-radius: 0rem;
-  height: 100%;
-  width: 100%;
-  background-image: linear-gradient(
-    to top,
-    var(--secondary-bg-color),
-    transparent
-  );
+.playlist-card-foot {
+  margin-bottom: 0;
+  padding-inline: 0;
 }

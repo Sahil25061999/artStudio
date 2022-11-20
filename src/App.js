@@ -12,6 +12,7 @@ import {
   Login,
   Signup,
   History,
+  SingleVideoPage,
 } from './pages/pages_index';
 import {
   Navbar,
@@ -57,6 +58,7 @@ function App() {
             </RequiresAuth>
           }
         />
+
         <Route path="/videolist" element={<VideoList />} />
         <Route path="/Mockman" element={<Mockman />} />
         <Route
@@ -85,6 +87,7 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/watch/:watchId" element={<SingleVideoPage />} />
       </Routes>
     </>
     // </div>

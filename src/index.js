@@ -6,7 +6,7 @@ import { makeServer } from './server';
 import {
   CategoryProvider,
   VideoListProvider,
-  IndividualVideoProvider,
+  CurrVideoProvider,
   TokenProvider,
   WatchLaterProvider,
   PlaylistProvider,
@@ -23,7 +23,7 @@ ReactDOM.render(
     <Router>
       <AuthProvider>
         <TokenProvider>
-          <IndividualVideoProvider>
+          <CurrVideoProvider>
             <HistoryProvider>
               <LikedListProvider>
                 <WatchLaterProvider>
@@ -37,7 +37,7 @@ ReactDOM.render(
                 </WatchLaterProvider>
               </LikedListProvider>
             </HistoryProvider>
-          </IndividualVideoProvider>
+          </CurrVideoProvider>
         </TokenProvider>
       </AuthProvider>
     </Router>

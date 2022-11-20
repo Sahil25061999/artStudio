@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { PlaylistCard, VideoList } from '../../components/components_index';
 import { useVideoList, usePlaylist } from '../../context/context_index';
-import { useToken } from '../../hook/hook_index';
+import { getToken } from '../../utils/utils_index';
 
 export const Playlist = () => {
   const { videoInformation } = useVideoList();
   const { playlist, dispatchPlaylistModal } = usePlaylist();
-  const token = useToken();
+  const token = getToken();
   useEffect(() => {
     (async () => {
       try {

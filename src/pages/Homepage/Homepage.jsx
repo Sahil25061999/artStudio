@@ -84,7 +84,7 @@ export const Homepage = () => {
           })}
         </div>
       </div>
-      <VideoList sectionTitle={'Explore Now'}>
+      <VideoList sectionTitle={''}>
         {videoInformation.map((item) => {
           return <VideoCard key={item._id} video={item} />;
         })}

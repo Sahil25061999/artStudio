@@ -1,3 +1,3 @@
-export const useToken = () => {
+export const getToken = () => {
   return localStorage.getItem('token');
 };

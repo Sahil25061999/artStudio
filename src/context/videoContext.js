@@ -1,14 +1,14 @@
 import React, { useContext, createContext, useState } from 'react';
 
-const IndividualVideoContext = createContext();
+const CurrVideoContext = createContext();
 
-export const IndividualVideoProvider = ({ children }) => {
+export const CurrVideoProvider = ({ children }) => {
   const [currVideo, setCurrVideo] = useState({});
   return (
-    <IndividualVideoContext.Provider value={{ currVideo, setCurrVideo }}>
+    <CurrVideoContext.Provider value={{ currVideo, setCurrVideo }}>
       {children}
-    </IndividualVideoContext.Provider>
+    </CurrVideoContext.Provider>
   );
 };
 
-export const useIndividualVideo = () => useContext(IndividualVideoContext);
+export const useCurrVideo = () => useContext(CurrVideoContext);

@@ -5,7 +5,7 @@ import {
   useVideoList,
   useWatchLater,
 } from '../../context/context_index';
-import { useToken } from '../../hook/hook_index';
+import { getToken } from '../../utils/utils_index';
 import './PlaylistModal.css';
 
 export const PlaylistModal = () => {
@@ -25,7 +25,7 @@ export const PlaylistModal = () => {
     dispatchPlaylistModal,
   } = usePlaylist();
   const { videoInformation, setVideoInformation } = useVideoList();
-  const token = useToken();
+  const token = getToken();
 
   axios.defaults.headers.common['authorization'] = token;
 

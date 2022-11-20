@@ -26,6 +26,10 @@
   transition-timing-function: ease-in;
 }
 
+.video-page {
+  margin-top: 4rem;
+}
+
 @media screen and (max-width: 524px) {
   .app {
     padding-inline: 2rem;

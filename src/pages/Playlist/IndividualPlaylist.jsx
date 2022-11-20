@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { VideoCard, VideoList } from '../../components/components_index';
 import { usePlaylist, useVideoList } from '../../context/context_index';
-import { useToken } from '../../hook/hook_index';
+import { getToken } from '../../utils/utils_index';
 
 export const IndividualPlaylist = () => {
-  const token = useToken();
+  const token = getToken();
   const { videoInformation } = useVideoList();
   const { playlist, dispatchPlaylistModal } = usePlaylist();
   const [playlistVideoList, setPlaylistVideoList] = useState([]);

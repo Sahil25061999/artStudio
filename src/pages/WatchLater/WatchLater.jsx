@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useVideoList, useWatchLater } from '../../context/context_index';
-import { useToken } from '../../hook/hook_index';
+import { getToken } from '../../utils/utils_index';
 import { VideoCard, VideoList } from '../../components/components_index';
 import './WatchLater.css';
 
 export const WatchLater = () => {
   const { videoInformation } = useVideoList();
   const { watchLaterList, setWatchLaterList } = useWatchLater();
-  const token = useToken();
+  const token = getToken();
 
   useEffect(() => {
     (async () => {
