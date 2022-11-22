@@ -11,6 +11,7 @@ import {
   useVideoList,
   useToken,
 } from '../../context/context_index';
+import { useDocumentTitle } from '../../hook/hook_index';
 import './Homepage.css';
 import { LoadingPage } from '../pages_index';
 
@@ -18,7 +19,9 @@ export const Homepage = () => {
   const categoryContainer = useRef(null);
   const { categoryData } = useCategory();
   const { videoInformation } = useVideoList();
-  const { token, setToken } = useToken();
+  // const { token, setToken } = useToken();
+
+  useDocumentTitle('ArtStudio');
 
   const scrollOffset = 300;
 
@@ -39,7 +42,7 @@ export const Homepage = () => {
   //       console.error(e);
   //     }
 
-  //      setToken(token)
+  //     //  setToken(token)
   //   })();
   // }, []);
 

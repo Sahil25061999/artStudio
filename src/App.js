@@ -1,5 +1,5 @@
 import './App.css';
-
+import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import {
@@ -23,9 +23,11 @@ import {
 import Mockman from 'mockman-js';
 
 function App() {
-  let sideNavbar = null;
   const location = useLocation();
   const { pathname: currentPath } = location;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     // <div className="App">
@@ -35,7 +37,6 @@ function App() {
       <Navbar />
       {(() => {
         if (currentPath !== '/login' && currentPath !== '/signup') {
-          console.log(currentPath, 'enter');
           return <SideNavbar />;
         }
       })()}

@@ -3,6 +3,7 @@ import { getToken } from '../../utils/utils_index';
 
 export const RequiresAuth = ({ children }) => {
   const token = getToken();
+
   const location = useLocation();
   return token?.length ? (
     children

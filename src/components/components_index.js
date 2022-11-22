@@ -9,3 +9,4 @@ export { RequiresAuth } from './RequiresAuth/RequiresAuth';
 export { VideoList } from './VideoList/VideoList';
 export { Search } from './Search/Search';
 export { SingleVideoCard } from './SingleVideoCard/SingleVideoCard';
+export { ShortVideoCard } from './ShortVideoCard/ShortVideoCard';

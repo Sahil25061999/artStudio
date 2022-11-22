@@ -1,12 +1,12 @@
 .video-card-single {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr fit-content;
   grid-template-rows: 1fr min-content;
 }
 
 .video-card-single .card-video-container {
   grid-column: 1 / span 2;
-  height: 65vmin;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   aspect-ratio: 16/9;
@@ -15,6 +15,14 @@
 
 .video-card-single .card-head {
   grid-column: 1;
+}
+
+.video-card-single .card-heading {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .video-card-single .video-card-foot {

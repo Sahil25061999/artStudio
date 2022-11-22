@@ -6,11 +6,12 @@ import {
   useWatchLikeList,
   useLikedList,
 } from '../../context/context_index';
+import { useDocumentTitle } from '../../hook/hook_index';
 import { getToken } from '../../utils/utils_index';
 
 export const LikedList = () => {
   // const { videoInformation } = useVideoList();
-
+  useDocumentTitle('Liked List | ArtStudio');
   const token = getToken();
 
   // const {

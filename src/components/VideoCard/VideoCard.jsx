@@ -27,7 +27,6 @@ export const VideoCard = ({ video }) => {
   const { thumbnailSrc, creator: channelName, title: videoTitle } = video;
   const navigate = useNavigate();
   const location = useLocation();
-
   axios.defaults.headers.common['authorization'] = token;
 
   // console.log(location);
@@ -86,9 +85,9 @@ export const VideoCard = ({ video }) => {
   };
 
   const handleVideoClick = async () => {
+    setCurrVideo(() => ({ ...video }));
     try {
-      console.log(currVideo);
-      navigate(`/watch/${video._id}`, { state: currVideo });
+      navigate(`/watch/${video._id}`);
       const historyResp = await axios.post('/api/user/history', { video });
       setHistoryList(() => historyResp.data.history);
     } catch (e) {
@@ -109,21 +108,17 @@ export const VideoCard = ({ video }) => {
   };
 
   useEffect(() => {
-    // console.log(currVideo);
+    console.log(likedList);
     setLike(likedList.some(({ _id: currVidId }) => currVidId === video._id));
     setWatchLater(
       watchLaterList.some(({ _id: currVidId }) => currVidId === video._id)
     );
   }, [likedList, watchLaterList]);
 
-  useEffect(() => {
-    setCurrVideo({ ...video, liked: like, watchlater: watchLater });
-  }, [like, watchLater]);
-
   return (
     <div
       className="video-card "
-      onClick={handleVideoClick}
+      onClick={() => handleVideoClick()}
       // style={{
       //   backgroundImage: ` linear-gradient(to top,black,rgba(255,255,255,.2)),url(${thumbnailSrc})
       //   `,

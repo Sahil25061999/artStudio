@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { getDocumentTitle } from '../../utils/utils_index';
+import { useDocumentTitle } from '../../hook/useDocumentTitle';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {
@@ -12,40 +14,33 @@ import {
 import { getToken } from '../../utils/utils_index';
 import './SingleVideoCard.css';
 
-export const SingleVideoCard = ({ video }) => {
+export const SingleVideoCard = () => {
+  const counter = 0;
+  const { likedList, setLikedList } = useLikedList();
+  const { watchLaterList, setWatchLaterList } = useWatchLater();
+  const { dispatchPlaylistModal } = usePlaylist();
+  const { currVideo } = useCurrVideo();
   const {
-    thumbnailSrc,
     creator: channelName,
     title: videoTitle,
     liked,
     watchlater,
-  } = video;
-
-  const { videoInformation, setVideoInformation } = useVideoList();
-  const { likedList, setLikedList } = useLikedList();
-  const { historyList, setHistoryList } = useHistory();
-  const { watchLaterList, setWatchLaterList } = useWatchLater();
-  const { currVideo, setCurrVideo } = useCurrVideo();
+    source,
+  } = currVideo;
   const [like, setLike] = useState(liked);
   const [watchLater, setWatchLater] = useState(watchlater);
   const token = getToken();
-  const { dispatchPlaylistModal } = usePlaylist();
-
-  const navigate = useNavigate();
-  const location = useLocation();
-
   axios.defaults.headers.common['authorization'] = token;
 
-  // console.log(location);
+  useDocumentTitle(currVideo.title, currVideo);
 
   const addToWatchLaterBtn = async () => {
     try {
       const watchLaterResp = await axios.post('/api/user/watchlater', {
-        video,
+        currVideo,
       });
       setWatchLaterList(() => watchLaterResp.data.watchlater);
     } catch (e) {
-      console.log(e);
       console.error(e);
     }
   };
@@ -53,7 +48,7 @@ export const SingleVideoCard = ({ video }) => {
   const removeFromWatchLaterBtn = async () => {
     try {
       const removeWatchLaterResp = await axios.delete(
-        `/api/user/watchlater/${video._id}`
+        `/api/user/watchlater/${currVideo._id}`
       );
       setWatchLaterList(() => removeWatchLaterResp.data.watchlater);
     } catch (e) {
@@ -62,17 +57,8 @@ export const SingleVideoCard = ({ video }) => {
   };
   const likedVideoBtn = async (e) => {
     try {
-      const likeResp = await axios.post('/api/user/likes', { video });
+      const likeResp = await axios.post('/api/user/likes', { currVideo });
       setLikedList(() => likeResp.data.likes);
-
-      // setVideoInformation([
-      //   ...videoInformation.map((currVideo) => {
-      //     if (currVideo._id == video._id) {
-      //       return { ...video, liked: !video.liked };
-      //     }
-      //     return { ...currVideo };
-      //   }),
-      // ]);
     } catch (e) {
       console.error(e);
     }
@@ -80,7 +66,9 @@ export const SingleVideoCard = ({ video }) => {
 
   const dislikeVideoBtn = async (e) => {
     try {
-      const dislikeResp = await axios.delete(`/api/user/likes/${video._id}`);
+      const dislikeResp = await axios.delete(
+        `/api/user/likes/${currVideo._id}`
+      );
       setLikedList(() => dislikeResp.data.likes);
     } catch (e) {
       console.error(e);
@@ -88,58 +76,25 @@ export const SingleVideoCard = ({ video }) => {
   };
 
   const openPlaylistModal = () => {
-    dispatchPlaylistModal({ type: 'OPEN_MODAL', payload: video });
-  };
-
-  const handleVideoClick = async () => {
-    try {
-      console.log(currVideo);
-      navigate(`/watch/${video._id}`, { state: currVideo });
-      const historyResp = await axios.post('/api/user/history', { video });
-      setHistoryList(() => historyResp.data.history);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  const handleDelete = async () => {
-    try {
-      const deleteHistoryResp = await axios.delete(
-        `/api/user/history/${video._id}`
-      );
-      console.log(deleteHistoryResp);
-      setHistoryList(() => deleteHistoryResp.data.history);
-    } catch (e) {
-      console.error(e);
-    }
+    dispatchPlaylistModal({ type: 'OPEN_MODAL', payload: currVideo });
   };
 
   useEffect(() => {
-    // console.log(currVideo);
-    setLike(likedList.some(({ _id: currVidId }) => currVidId === video._id));
-    setWatchLater(
-      watchLaterList.some(({ _id: currVidId }) => currVidId === video._id)
+    console.log(likedList);
+    setLike(
+      likedList.some(({ _id: currVidId }) => currVidId === currVideo._id)
     );
-  }, [likedList, watchLaterList]);
-
-  //   useEffect(() => {
-  //     setCurrVideo({ ...video, liked: like, watchlater: watchLater });
-  //   }, [like, watchLater]);
+    setWatchLater(
+      watchLaterList.some(({ _id: currVidId }) => currVidId === currVideo._id)
+    );
+    window.scrollTo(0, 0);
+  }, [likedList, watchLaterList, currVideo]);
 
   return (
-    <div
-      className=" video-card-single"
-      // onClick={handleVideoClick}
-    >
+    <div className=" video-card-single">
       <div className="card-video-container">
-        {/* <img
-      className="card-image video-card-image"
-      src={thumbnailSrc}
-      alt="product-image"
-      loading="lazy"
-    /> */}
         <iframe
-          src="https://www.youtube.com/embed/Qt0ZrQWtQGg"
+          src={source}
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

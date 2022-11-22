@@ -19,112 +19,147 @@ import cardimage10 from '../../assets/image/videoCard/10.webp';
 export const videos = [
   {
     _id: uuid(),
-    thumbnailSrc: cardimage1,
-    title: 'Awesome Video about Coding',
+    category: 'dance',
+    thumbnailSrc:
+      'https://i.ytimg.com/vi/5zKAAjQgETk/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApWOkZB788B-GtzqvePsm39dI-Vw',
+    title: 'Uptown Funk - Mark Ronson ft. Bruno Mars / Junsun Yoo Choreography',
+    creator: '1MILLION Dance Studio',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
-    creator: 'Soham Shah',
+
     playlist: [],
     liked: false,
     watchlater: false,
+    source: 'https://www.youtube.com/embed/5zKAAjQgETk',
   },
   {
     _id: uuid(),
-    thumbnailSrc: cardimage2,
-    title: 'Neural Networks from Scratch - P.1 Intro and Neuron Code',
-    creator: 'Sentdex',
+    category: 'music',
+    thumbnailSrc:
+      'https://i.ytimg.com/vi/BddP6PYo2gs/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBkH6mntazw0BSfrHhPwTiqmBIZuQ',
+    title:
+      'Kesariya - Brahmāstra | Ranbir Kapoor | Alia Bhatt | Pritam | Arijit Singh | Amitabh Bhattacharya',
+    creator: 'Sony Music India',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
     playlist: [],
     liked: false,
     watchlater: false,
+    source: 'https://www.youtube.com/embed/BddP6PYo2gs',
   },
   {
     _id: uuid(),
-    thumbnailSrc: cardimage3,
-    title: 'Neural Networks from Scratch - P.1 Intro and Neuron Code',
-    creator: 'Sentdex',
+    category: 'gaming',
+    thumbnailSrc:
+      'https://i.ytimg.com/vi/dBX9mBobmEw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAOYuzTX5qTpp0WEueOpsRbUN5E2A',
+    title:
+      'SEKIRO SHADOWS DIE TWICE Walkthrough Gameplay Part 1 - INTRO (Sekiro)',
+    creator: 'theRadBrad',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
     playlist: [],
     liked: false,
     watchlater: false,
+    source: 'https://www.youtube.com/embed/dBX9mBobmEw',
   },
   {
     _id: uuid(),
-    thumbnailSrc: cardimage4,
-    title: 'Neural Networks from Scratch - P.1 Intro and Neuron Code',
-    creator: 'Sentdex',
+    category: 'sport',
+    thumbnailSrc:
+      'https://i.ytimg.com/vi/bkwcFtAMMvw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBZMuH7rZ1lhFVpCSDolMBcHOWIKA',
+    title: 'Michael Chandler vs Tony Ferguson | FREE FIGHT | UFC 281',
+    creator: 'UFC - Ultimate Fighting Championship',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
     playlist: [],
     liked: false,
     watchlater: false,
+    source: 'https://www.youtube.com/embed/bkwcFtAMMvw',
   },
   {
     _id: uuid(),
-    thumbnailSrc: cardimage5,
-    title: 'Neural Networks from Scratch - P.1 Intro and Neuron Code',
-    creator: 'Sentdex',
+    category: 'travel',
+    thumbnailSrc:
+      'https://i.ytimg.com/vi/gljQOWdIHhw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC-NzRZgTr4PHVCw4BLwmgmcZYTUQ',
+    title:
+      'Heaven on Earth : Pahalgam, Kashmir | Traveling Mondays : Driving Renault Kiger in Kashmir vlog',
+    creator: 'Traveling Mondays',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
     playlist: [],
     liked: false,
     watchlater: false,
+    source: 'https://www.youtube.com/embed/gljQOWdIHhw',
   },
   {
     _id: uuid(),
-    thumbnailSrc: cardimage6,
-    title: 'Neural Networks from Scratch - P.1 Intro and Neuron Code',
-    creator: 'Sentdex',
+    category: 'sport',
+    thumbnailSrc:
+      'https://i.ytimg.com/vi/2P3Hwdln1vA/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDxWLq6TtYcY9kRQQ8m4yHcaNtkZg',
+    title: 'Leon Edwards - A Real Life Rocky Story',
+    creator: 'The Fighting Business',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
     playlist: [],
     liked: false,
     watchlater: false,
+    source: 'https://www.youtube.com/embed/2P3Hwdln1vA',
   },
   {
     _id: uuid(),
-    thumbnailSrc: cardimage7,
-    title: 'Neural Networks from Scratch - P.1 Intro and Neuron Code',
-    creator: 'Sentdex',
+    category: 'education',
+    thumbnailSrc:
+      'https://i.ytimg.com/vi/n5ArCPYnNOo/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAeQnx3vfjOJSQ64VLWDnZqHVK2ug',
+    title: 'Sairat I A Narrative of Contrast',
+    creator: 'Cinema Beyond Entertainment',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
     playlist: [],
     liked: false,
     watchlater: false,
+    source: 'https://www.youtube.com/embed/n5ArCPYnNOo',
   },
   {
     _id: uuid(),
-    thumbnailSrc: cardimage8,
-    title: 'Neural Networks from Scratch - P.1 Intro and Neuron Code',
-    creator: 'Sentdex',
+    category: 'dance',
+    thumbnailSrc:
+      'https://i.ytimg.com/vi/NeRZ_tdD8KM/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCUbOOW91ltwNznEhDnAmzOdRqyHQ',
+    title:
+      'Taki Taki - DJ Snake ft. Selena Gomez, Ozuna, Cardi B / Minny Park Choreography',
+    creator: '1MILLION Dance Studio',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
     playlist: [],
     liked: false,
     watchlater: false,
+    source: 'https://www.youtube.com/embed/NeRZ_tdD8KM',
   },
   {
     _id: uuid(),
-    thumbnailSrc: cardimage9,
-    title: 'Neural Networks from Scratch - P.1 Intro and Neuron Code',
-    creator: 'Sentdex',
+    category: 'music',
+    thumbnailSrc:
+      'https://i.ytimg.com/vi/a7fzkqLozwA/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB1AaAAuADigIMCAAQARgUID8ofzAP&rs=AOn4CLCgGbNRkXC6-7IjjTsEtH0L3I0JEQ',
+    title: 'Lauv - I Like Me Better [Official Audio]',
+    creator: 'Lauv',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
     playlist: [],
     liked: false,
     watchlater: false,
+    source: 'https://www.youtube.com/embed/a7fzkqLozwA',
   },
   {
     _id: uuid(),
-    thumbnailSrc: cardimage10,
-    title: 'Neural Networks from Scratch - P.1 Intro and Neuron Code',
-    creator: 'Sentdex',
+    category: 'dance',
+    thumbnailSrc:
+      'https://i.ytimg.com/vi/Bu4pd5GPO8o/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAMHS8P1yuP8hM9cP6nWKKpLOiSdg',
+    title: 'Kesariya - Brahmastra | Himanshu Dulani Dance Choreography',
+    creator: 'Himanshu Dulani',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
     playlist: [],
     liked: false,
     watchlater: false,
+    source: 'https://www.youtube.com/embed/Bu4pd5GPO8o',
   },
 ];

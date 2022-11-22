@@ -15,6 +15,11 @@ import { v4 as uuid } from 'uuid';
 export const categories = [
   {
     _id: uuid(),
+    categoryName: 'all',
+    iconSrc: 'fa-music',
+  },
+  {
+    _id: uuid(),
     categoryName: 'dance',
     iconSrc: 'fa-music',
   },

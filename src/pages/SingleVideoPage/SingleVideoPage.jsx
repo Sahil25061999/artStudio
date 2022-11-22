@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import {
   SingleVideoCard,
   VideoList,
-  VideoCard,
+  ShortVideoCard,
 } from '../../components/components_index';
 import { useVideoList } from '../../context/context_index';
 import './SingleVideoPage.css';
@@ -11,11 +11,12 @@ import './SingleVideoPage.css';
 export const SingleVideoPage = () => {
   const { videoInformation } = useVideoList();
   const location = useLocation();
+
   //   const video = { ...location.state };
   return (
     <div className="single-video-page-layout video-page app">
       <div className="main-video-container">
-        <SingleVideoCard video={{ ...location.state }} />
+        <SingleVideoCard />
         {/* <div className="video-container"></div>
         <div className="video-info-container">
           <div className="video-creator-container">
@@ -30,7 +31,7 @@ export const SingleVideoPage = () => {
         <div className="suggested-video-container">
           <VideoList sectionTitle={''}>
             {videoInformation.map((item) => {
-              return <VideoCard key={item._id} video={item} />;
+              return <ShortVideoCard key={item._id} video={item} />;
             })}
           </VideoList>
         </div>
