@@ -4,11 +4,13 @@ import axios from 'axios';
 import { VideoCard, VideoList } from '../../components/components_index';
 import { usePlaylist, useVideoList } from '../../context/context_index';
 import { getToken } from '../../utils/utils_index';
+import { useDocumentTitle } from '../../hook/hook_index';
 
 export const IndividualPlaylist = () => {
   const token = getToken();
   const { videoInformation } = useVideoList();
   const { playlist, dispatchPlaylistModal } = usePlaylist();
+  const [playlistTitle, setPlaylistTitle] = useState('');
   const [playlistVideoList, setPlaylistVideoList] = useState([]);
   let { playlistId } = useParams();
 
@@ -29,9 +31,11 @@ export const IndividualPlaylist = () => {
   }, [videoInformation]);
   useEffect(() => {
     const currPlaylist = playlist.find((item) => item._id === playlistId);
-    console.log(currPlaylist);
+    setPlaylistTitle(currPlaylist.title);
     setPlaylistVideoList([...currPlaylist.videos]);
   }, [playlist]);
+
+  useDocumentTitle(`${playlistTitle} | Playist | ArtStudio  `, playlistTitle);
 
   return (
     <div className="video-page app">

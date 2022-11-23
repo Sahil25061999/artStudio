@@ -10,3 +10,4 @@ export { VideoList } from './VideoList/VideoList';
 export { Search } from './Search/Search';
 export { SingleVideoCard } from './SingleVideoCard/SingleVideoCard';
 export { ShortVideoCard } from './ShortVideoCard/ShortVideoCard';
+export { SortBy } from './SortBy/SortBy';

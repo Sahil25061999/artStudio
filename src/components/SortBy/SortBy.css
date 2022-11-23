@@ -1,0 +1,43 @@
+.sort-by-section {
+  position: relative;
+}
+
+.btn-sort {
+  background-color: var(--modal-card-background-color);
+  color: var(--primary-text-color);
+  border-radius: 0.5rem;
+}
+
+.sort-by-values-list {
+  position: absolute;
+  width: fit-content;
+  background-color: var(--modal-card-background-color);
+  top: 2.8rem;
+  padding: 0.5rem 0.62rem;
+  border-radius: 0.5rem;
+  z-index: 1;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: 0.3s;
+}
+
+.sort-by-values-list.display-list {
+  transform: scaleY(1);
+}
+.sort-list-items {
+  padding-block: 0.5rem;
+}
+
+.sort-list-items:hover {
+  cursor: pointer;
+}
+
+.sort-list-items::before {
+  content: '😶';
+  visibility: hidden;
+}
+
+.sort-list-items:active.sort-list-items::before,
+.sort-list-items:focus.sort-list-items::before {
+  visibility: visible;
+}
