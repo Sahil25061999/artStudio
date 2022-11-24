@@ -7,3 +7,4 @@ export { AuthProvider, useAuth } from './authContext';
 export { LikedListProvider, useLikedList } from './likeListContext';
 export { CurrVideoProvider, useCurrVideo } from './videoContext';
 export { HistoryProvider, useHistory } from './historyContext';
+export { FilterProvider, useFilter } from './filterContext';

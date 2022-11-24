@@ -19,6 +19,11 @@ import cardimage10 from '../../assets/image/videoCard/10.webp';
 export const videos = [
   {
     _id: uuid(),
+    dateUploaded: new Date(
+      new Date(2020, 0, 1).getTime() +
+        Math.random() *
+          (new Date(2022, 0, 1).getTime() - new Date(2020, 0, 1).getTime())
+    ),
     category: 'dance',
     thumbnailSrc:
       'https://i.ytimg.com/vi/5zKAAjQgETk/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLApWOkZB788B-GtzqvePsm39dI-Vw',
@@ -34,6 +39,11 @@ export const videos = [
   },
   {
     _id: uuid(),
+    dateUploaded: new Date(
+      new Date(2020, 0, 1).getTime() +
+        Math.random() *
+          (new Date(2022, 0, 1).getTime() - new Date(2020, 0, 1).getTime())
+    ),
     category: 'music',
     thumbnailSrc:
       'https://i.ytimg.com/vi/BddP6PYo2gs/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBkH6mntazw0BSfrHhPwTiqmBIZuQ',
@@ -49,6 +59,11 @@ export const videos = [
   },
   {
     _id: uuid(),
+    dateUploaded: new Date(
+      new Date(2020, 0, 1).getTime() +
+        Math.random() *
+          (new Date(2022, 0, 1).getTime() - new Date(2020, 0, 1).getTime())
+    ),
     category: 'gaming',
     thumbnailSrc:
       'https://i.ytimg.com/vi/dBX9mBobmEw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAOYuzTX5qTpp0WEueOpsRbUN5E2A',
@@ -64,6 +79,11 @@ export const videos = [
   },
   {
     _id: uuid(),
+    dateUploaded: new Date(
+      new Date(2020, 0, 1).getTime() +
+        Math.random() *
+          (new Date(2022, 0, 1).getTime() - new Date(2020, 0, 1).getTime())
+    ),
     category: 'sport',
     thumbnailSrc:
       'https://i.ytimg.com/vi/bkwcFtAMMvw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBZMuH7rZ1lhFVpCSDolMBcHOWIKA',
@@ -78,6 +98,11 @@ export const videos = [
   },
   {
     _id: uuid(),
+    dateUploaded: new Date(
+      new Date(2020, 0, 1).getTime() +
+        Math.random() *
+          (new Date(2022, 0, 1).getTime() - new Date(2020, 0, 1).getTime())
+    ),
     category: 'travel',
     thumbnailSrc:
       'https://i.ytimg.com/vi/gljQOWdIHhw/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC-NzRZgTr4PHVCw4BLwmgmcZYTUQ',
@@ -93,6 +118,11 @@ export const videos = [
   },
   {
     _id: uuid(),
+    dateUploaded: new Date(
+      new Date(2020, 0, 1).getTime() +
+        Math.random() *
+          (new Date(2022, 0, 1).getTime() - new Date(2020, 0, 1).getTime())
+    ),
     category: 'sport',
     thumbnailSrc:
       'https://i.ytimg.com/vi/2P3Hwdln1vA/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDxWLq6TtYcY9kRQQ8m4yHcaNtkZg',
@@ -107,6 +137,11 @@ export const videos = [
   },
   {
     _id: uuid(),
+    dateUploaded: new Date(
+      new Date(2020, 0, 1).getTime() +
+        Math.random() *
+          (new Date(2022, 0, 1).getTime() - new Date(2020, 0, 1).getTime())
+    ),
     category: 'education',
     thumbnailSrc:
       'https://i.ytimg.com/vi/n5ArCPYnNOo/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAeQnx3vfjOJSQ64VLWDnZqHVK2ug',
@@ -121,6 +156,11 @@ export const videos = [
   },
   {
     _id: uuid(),
+    dateUploaded: new Date(
+      new Date(2020, 0, 1).getTime() +
+        Math.random() *
+          (new Date(2022, 0, 1).getTime() - new Date(2020, 0, 1).getTime())
+    ),
     category: 'dance',
     thumbnailSrc:
       'https://i.ytimg.com/vi/NeRZ_tdD8KM/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCUbOOW91ltwNznEhDnAmzOdRqyHQ',
@@ -136,6 +176,11 @@ export const videos = [
   },
   {
     _id: uuid(),
+    dateUploaded: new Date(
+      new Date(2020, 0, 1).getTime() +
+        Math.random() *
+          (new Date(2022, 0, 1).getTime() - new Date(2020, 0, 1).getTime())
+    ),
     category: 'music',
     thumbnailSrc:
       'https://i.ytimg.com/vi/a7fzkqLozwA/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB1AaAAuADigIMCAAQARgUID8ofzAP&rs=AOn4CLCgGbNRkXC6-7IjjTsEtH0L3I0JEQ',
@@ -150,6 +195,11 @@ export const videos = [
   },
   {
     _id: uuid(),
+    dateUploaded: new Date(
+      new Date(2020, 0, 1).getTime() +
+        Math.random() *
+          (new Date(2022, 0, 1).getTime() - new Date(2020, 0, 1).getTime())
+    ),
     category: 'dance',
     thumbnailSrc:
       'https://i.ytimg.com/vi/Bu4pd5GPO8o/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAMHS8P1yuP8hM9cP6nWKKpLOiSdg',

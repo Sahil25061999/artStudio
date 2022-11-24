@@ -11,6 +11,7 @@ import {
   useCategory,
   useVideoList,
   useToken,
+  useFilter,
 } from '../../context/context_index';
 import { useDocumentTitle } from '../../hook/hook_index';
 import './Homepage.css';
@@ -21,7 +22,9 @@ export const Homepage = () => {
 
   const [{ leftScrollBtnDisplay, rightScrollBtnDisplay }, setScrollBtnDisplay] =
     useState({});
-  const [categorySelected, setCategorySelect] = useState('all');
+  const {
+    filter: { category, sort },
+  } = useFilter();
   const { categoryData } = useCategory();
   const { videoInformation } = useVideoList();
 
@@ -61,17 +64,64 @@ export const Homepage = () => {
     }
   };
 
-  const handleCategorySelect = (currentCategory) => {
-    console.log(currentCategory);
-    if (currentCategory === 'all') {
-      console.log('enter');
-      return videoInformation;
+  const getSortedData = (data) => {
+    if (sort.alphabet && sort.ascending) {
+      return data.sort((item1, item2) => {
+        if (item1.title > item2.title) {
+          return 1;
+        }
+        if (item1.title < item2.title) {
+          return -1;
+        }
+        return 0;
+      });
+    }
+    if (sort.alphabet && sort.descending) {
+      return data.sort((item1, item2) => {
+        if (item1.title < item2.title) {
+          return 1;
+        }
+        if (item1.title > item2.title) {
+          return -1;
+        }
+        return 0;
+      });
+    }
+    if (sort.date && sort.ascending) {
+      return data.sort((item1, item2) => {
+        if (item1.dateUploaded > item2.dateUploaded) {
+          return 1;
+        }
+        if (item1.dateUploaded < item2.dateUploaded) {
+          return -1;
+        }
+        return 0;
+      });
+    }
+
+    if (sort.date && sort.descending) {
+      return data.sort((item1, item2) => {
+        if (item1.dateUploaded < item2.dateUploaded) {
+          return 1;
+        }
+        if (item1.dateUploaded > item2.dateUploaded) {
+          return -1;
+        }
+        return 0;
+      });
+    }
+    return data;
+  };
+
+  const handleCategorySelect = (category) => {
+    console.log(category);
+    if (category === 'all') {
+      return getSortedData(videoInformation);
     }
     const data = videoInformation.filter((item) => {
-      console.log(item.category);
-      return item.category == currentCategory;
+      return item.category == category;
     });
-    return data;
+    return getSortedData(data);
   };
 
   // useEffect(() => {
@@ -101,9 +151,9 @@ export const Homepage = () => {
     }
   }, []);
 
-  const filteredList = handleCategorySelect(categorySelected);
+  const filteredList = handleCategorySelect(category, getSortedData);
   console.log(filteredList);
-  console.log(categorySelected);
+  // console.log(categorySelected);
 
   return (
     <div className="homepage-main app">
@@ -117,7 +167,7 @@ export const Homepage = () => {
 
       <div className="categories-section video-list-section">
         {/* <h2>Categories</h2> */}
-        <div className="btn-container scroll-btn-container">
+        {/* <div className="btn-container scroll-btn-container">
           <button
             className="btn btn-float btn-float-left"
             onClick={() => handleHorizontalScroll(-scrollOffset)}
@@ -132,7 +182,7 @@ export const Homepage = () => {
           >
             <span className="fas fa-angle-right categories-right-btn"></span>
           </button>
-        </div>
+        </div> */}
         <div className="linear-gradient-container">
           <div
             style={{ display: `${leftScrollBtnDisplay ? 'block' : 'none'}` }}
@@ -151,7 +201,6 @@ export const Homepage = () => {
                 key={id}
                 iconSrc={iconSrc}
                 categoryName={categoryName}
-                setCategorySelect={setCategorySelect}
               />
             );
           })}
@@ -160,13 +209,7 @@ export const Homepage = () => {
       <SortBy />
       <VideoList sectionTitle={''}>
         {filteredList.map((item) => {
-          return (
-            <VideoCard
-              key={item._id}
-              video={item}
-              catergorySelected={categorySelected}
-            />
-          );
+          return <VideoCard key={item._id} video={item} />;
         })}
       </VideoList>
     </div>

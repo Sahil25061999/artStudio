@@ -28,16 +28,35 @@
   padding-block: 0.5rem;
 }
 
-.sort-list-items:hover {
+.sort-list-items:hover,
+.sort-list-items:hover input ~ label {
   cursor: pointer;
 }
 
-.sort-list-items::before {
+.sort-list-items label::before {
   content: '😶';
   visibility: hidden;
 }
 
-.sort-list-items:active.sort-list-items::before,
-.sort-list-items:focus.sort-list-items::before {
+.sort-list-items input:checked ~ label::before {
   visibility: visible;
+}
+
+.sort-list-items {
+  position: relative;
+  /* pointer-events: auto; */
+}
+
+.sort-list-items input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  cursor: pointer;
+}
+
+.horizontal-line {
+  height: 1px;
+  width: 100%;
+  background-color: var(--secondary-bg-color);
 }
