@@ -38,7 +38,6 @@ export const VideoCard = ({ video }) => {
       });
       setWatchLaterList(() => watchLaterResp.data.watchlater);
     } catch (e) {
-      console.log(e);
       console.error(e);
     }
   };
@@ -100,7 +99,7 @@ export const VideoCard = ({ video }) => {
       const deleteHistoryResp = await axios.delete(
         `/api/user/history/${video._id}`
       );
-      console.log(deleteHistoryResp);
+
       setHistoryList(() => deleteHistoryResp.data.history);
     } catch (e) {
       console.error(e);
@@ -108,7 +107,6 @@ export const VideoCard = ({ video }) => {
   };
 
   useEffect(() => {
-    console.log(likedList);
     setLike(likedList.some(({ _id: currVidId }) => currVidId === video._id));
     setWatchLater(
       watchLaterList.some(({ _id: currVidId }) => currVidId === video._id)

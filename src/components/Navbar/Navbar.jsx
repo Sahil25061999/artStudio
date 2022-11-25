@@ -15,7 +15,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <header className="navigation ">
+      <header className="navigation">
         <div className="logo-container ">
           <h2 className="title">
             Art<span className="title-studio">Studio</span>

@@ -5,15 +5,19 @@
   left: 0;
   right: 0;
   margin-bottom: 4rem;
-  z-index: 1000;
+  z-index: 998;
   height: 4rem;
   width: 100%;
-  padding: 0.5rem 0.8rem;
+  padding: 0.5rem 5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 0.5rem;
-
+  /* background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0),
+    var(--secondary-bg-color)
+  ); */
   background-color: var(--secondary-bg-color);
 }
 

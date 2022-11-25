@@ -20,8 +20,8 @@ import { LoadingPage } from '../pages_index';
 export const Homepage = () => {
   const categoryContainer = useRef(null);
 
-  const [{ leftScrollBtnDisplay, rightScrollBtnDisplay }, setScrollBtnDisplay] =
-    useState({});
+  // const [{ leftScrollBtnDisplay, rightScrollBtnDisplay }, setScrollBtnDisplay] =
+  //   useState({});
   const {
     filter: { category, sort },
   } = useFilter();
@@ -37,37 +37,44 @@ export const Homepage = () => {
 
   const handleHorizontalScroll = (scrollOffset) => {
     categoryContainer.current.scrollLeft += scrollOffset;
+    console.log(
+      categoryContainer.current.scrollLeft +
+        categoryContainer.current.clientWidth,
+      categoryContainer.current.scrollWidth
+    );
 
-    if (
-      categoryContainer.current.scrollLeft + scrollOffset >
-      categoryContainer.current.clientWidth
-    ) {
-      setScrollBtnDisplay((prevState) => ({
-        ...prevState,
-        rightScrollBtnDisplay: false,
-      }));
-      return;
-    }
+    // if (
+    //   categoryContainer.current.scrollLeft + scrollOffset >=
+    //   categoryContainer.current.clientWidth
+    // ) {
+    //   console.log('enter');
+    //   setScrollBtnDisplay((prevState) => ({
+    //     ...prevState,
+    //     rightScrollBtnDisplay: false,
+    //   }));
+    //   return;
+    // }
 
-    if (categoryContainer.current.scrollLeft + scrollOffset < 0) {
-      setScrollBtnDisplay((prevState) => ({
-        ...prevState,
-        rightScrollBtnDisplay: true,
-        leftScrollBtnDisplay: false,
-      }));
-    } else {
-      setScrollBtnDisplay((prevState) => ({
-        ...prevState,
-        leftScrollBtnDisplay: true,
-        rightScrollBtnDisplay: true,
-      }));
-    }
+    // if (categoryContainer.current.scrollLeft + scrollOffset < 0) {
+    //   setScrollBtnDisplay((prevState) => ({
+    //     ...prevState,
+    //     rightScrollBtnDisplay: true,
+    //     leftScrollBtnDisplay: false,
+    //   }));
+    // } else {
+    //   setScrollBtnDisplay((prevState) => ({
+    //     ...prevState,
+    //     leftScrollBtnDisplay: true,
+    //     rightScrollBtnDisplay: true,
+    //   }));
+    // }
   };
 
   const getSortedData = (data) => {
-    if (sort.alphabet && sort.ascending) {
-      return data.sort((item1, item2) => {
-        if (item1.title > item2.title) {
+    let tempSortData = [];
+    if (sort.alphabet) {
+      tempSortData = data.sort((item1, item2) => {
+        if (item1.title.toUpperCase() > item2.title.toUpperCase()) {
           return 1;
         }
         if (item1.title < item2.title) {
@@ -76,19 +83,9 @@ export const Homepage = () => {
         return 0;
       });
     }
-    if (sort.alphabet && sort.descending) {
-      return data.sort((item1, item2) => {
-        if (item1.title < item2.title) {
-          return 1;
-        }
-        if (item1.title > item2.title) {
-          return -1;
-        }
-        return 0;
-      });
-    }
-    if (sort.date && sort.ascending) {
-      return data.sort((item1, item2) => {
+
+    if (sort.date) {
+      tempSortData = data.sort((item1, item2) => {
         if (item1.dateUploaded > item2.dateUploaded) {
           return 1;
         }
@@ -99,22 +96,14 @@ export const Homepage = () => {
       });
     }
 
-    if (sort.date && sort.descending) {
-      return data.sort((item1, item2) => {
-        if (item1.dateUploaded < item2.dateUploaded) {
-          return 1;
-        }
-        if (item1.dateUploaded > item2.dateUploaded) {
-          return -1;
-        }
-        return 0;
-      });
+    if (sort.ascending) {
+      return tempSortData;
+    } else {
+      return tempSortData.reverse();
     }
-    return data;
   };
 
   const handleCategorySelect = (category) => {
-    console.log(category);
     if (category === 'all') {
       return getSortedData(videoInformation);
     }
@@ -142,18 +131,16 @@ export const Homepage = () => {
   // }, []);
 
   useEffect(() => {
-    if (categoryContainer.current.scrollLeft <= 0) {
-      setScrollBtnDisplay((prevState) => ({
-        ...prevState,
-        leftScrollBtnDisplay: false,
-        rightScrollBtnDisplay: true,
-      }));
-    }
+    // if (categoryContainer.current.scrollLeft <= 0) {
+    //   setScrollBtnDisplay((prevState) => ({
+    //     ...prevState,
+    //     leftScrollBtnDisplay: false,
+    //     rightScrollBtnDisplay: true,
+    //   }));
+    // }
   }, []);
 
   const filteredList = handleCategorySelect(category, getSortedData);
-  console.log(filteredList);
-  // console.log(categorySelected);
 
   return (
     <div className="homepage-main app">
@@ -166,30 +153,29 @@ export const Homepage = () => {
       <h2>Explore Now</h2>
 
       <div className="categories-section video-list-section">
-        {/* <h2>Categories</h2> */}
-        {/* <div className="btn-container scroll-btn-container">
+        <div className="btn-container scroll-btn-container">
           <button
             className="btn btn-float btn-float-left"
             onClick={() => handleHorizontalScroll(-scrollOffset)}
-            style={{ display: `${leftScrollBtnDisplay ? 'block' : 'none'}` }}
+            // style={{ display: `${leftScrollBtnDisplay ? 'block' : 'none'}` }}
           >
             <span className="fas fa-angle-left categories-left-btn"></span>
           </button>
           <button
             className="btn btn-float btn-float-right"
             onClick={() => handleHorizontalScroll(scrollOffset)}
-            style={{ display: `${rightScrollBtnDisplay ? 'block' : ' none'}` }}
+            // style={{ display: `${rightScrollBtnDisplay ? 'block' : ' none'}` }}
           >
             <span className="fas fa-angle-right categories-right-btn"></span>
           </button>
-        </div> */}
+        </div>
         <div className="linear-gradient-container">
           <div
-            style={{ display: `${leftScrollBtnDisplay ? 'block' : 'none'}` }}
+            // style={{ display: `${leftScrollBtnDisplay ? 'block' : 'none'}` }}
             className="left-gradient"
           ></div>
           <div
-            style={{ display: `${rightScrollBtnDisplay ? 'block' : ' none'}` }}
+            // style={{ display: `${rightScrollBtnDisplay ? 'block' : ' none'}` }}
             className="right-gradient"
           ></div>
         </div>

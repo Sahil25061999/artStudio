@@ -13,8 +13,6 @@ export const SortBy = () => {
     dispatchFilter({ type: e.target.value });
   };
 
-  console.log(filter);
-
   return (
     <div className="sort-by-section">
       <div className="sort-by-container">

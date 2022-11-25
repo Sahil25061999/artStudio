@@ -23,9 +23,31 @@
   z-index: 2;
 }
 
+.categories-section.video-list-section {
+  /* margin: 0;*/
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.categories-container {
+  display: flex;
+  position: relative;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  overflow-x: scroll;
+  overscroll-behavior-inline: contain;
+  gap: 0;
+  margin: auto;
+  width: 92.5%;
+}
+
+.categories-container::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
 .scroll-btn-container,
 .linear-gradient-container {
-  width: 102%;
+  width: 100%;
   pointer-events: none;
   position: absolute;
   left: 0;
@@ -35,12 +57,14 @@
   display: flex;
   justify-content: space-between;
 }
+.linear-gradient-container {
+  width: 95%;
+}
 
 .scroll-btn-container .btn {
+  width: 100%;
   color: var(--primary-text-color);
   font-size: 1.2rem;
-  /* margin-top: 1rem; */
-  backdrop-filter: blur(10px);
   pointer-events: auto;
   border: none;
   margin-block: 0.5rem;
@@ -49,18 +73,25 @@
 }
 
 .scroll-btn-container .btn-float {
-  box-shadow: inset 4px 8px 24px rgb(9, 8, 8);
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
 }
-.scroll-btn-container .btn-float-left,
+.scroll-btn-container .btn-float:hover {
+  background-color: var(--hover-color);
+}
+
+/* .scroll-btn-container .btn-float-left,
 .left-gradient {
   margin-right: auto;
 }
 .scroll-btn-container .btn-float-right,
 .right-gradient {
   margin-left: auto;
-}
+} */
 
 .linear-gradient-container {
+  margin-inline: auto;
   bottom: 6%;
   height: 85%;
   z-index: 4;
@@ -101,32 +132,3 @@
   flex-wrap: wrap;
   gap: 1.8rem;
 } */
-.categories-section.video-list-section {
-  margin: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.categories-container {
-  display: flex;
-  position: relative;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  overflow-x: scroll;
-  overscroll-behavior-inline: contain;
-  scroll-snap-type: inline mandatory;
-  gap: 0;
-  margin: 0;
-  width: 100%;
-  padding-right: 1rem;
-
-  /* padding: 0 2rem; */
-}
-
-.categories-container > * {
-  scroll-snap-align: start;
-}
-
-.categories-container::-webkit-scrollbar-thumb {
-  background-color: transparent;
-}

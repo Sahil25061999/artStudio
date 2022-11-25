@@ -1,6 +1,6 @@
 .side-navbar {
   pointer-events: none;
-  z-index: 100;
+  z-index: 1000;
   position: fixed;
   height: 100vh;
   display: flex;
