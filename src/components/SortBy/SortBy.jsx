@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFilter } from '../../context/context_index';
 import './SortBy.css';
 
