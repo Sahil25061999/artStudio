@@ -39,7 +39,7 @@
 
 .form-section {
   grid-area: form;
-  width: 60%;
+  width: 100%;
   place-self: center;
   padding: 2rem;
 }
@@ -54,7 +54,8 @@
   /* background-color: var(--modal-card-background-color); */
   border-radius: 0.5rem;
   /* height: 90%; */
-  /* width: 80%; */
+  width: 60vmin;
+  margin-inline: auto;
 }
 
 .form-input-container {
@@ -90,6 +91,10 @@
 
 .signup-btn:hover {
   box-shadow: 2px 6px 16px rgba(255, 4, 0, 0.504);
+}
+
+.link-text {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 864px) {

@@ -17,7 +17,6 @@
   flex-direction: column;
   justify-content: center;
   height: fit-content;
-
   transition: 0.5s;
 }
 
@@ -38,13 +37,6 @@
   align-items: baseline;
   position: relative;
   color: var(--inactive-nav-item, rgb(164, 164, 164));
-}
-
-.logout-btn {
-  width: 100%;
-  font-size: inherit;
-  background: none;
-  border: none;
 }
 
 .side-nav-icon {
@@ -98,19 +90,21 @@
   cursor: pointer;
 } */
 
-@media screen and (max-width: 524px) {
+@media screen and (max-width: 596px) {
   .side-navbar {
     justify-content: center;
     align-items: flex-end;
     width: 100%;
     top: auto;
-    bottom: -5%;
-    height: fit-content;
+    bottom: -2rem;
+    height: min-content;
   }
 
   .side-nav-list {
     width: 100%;
+    /* height: 100%; */
 
+    /* padding-bottom: 0; */
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;

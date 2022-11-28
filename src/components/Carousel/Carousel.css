@@ -8,13 +8,14 @@ iframe {
   flex-direction: column;
   align-items: flex-start;
   justify-content: end;
-  padding-block: 5rem;
+  padding-block-start: 5rem;
+  padding-block-end: clamp(2rem, 5%, 5rem);
   overflow: hidden;
 }
 
 .carousel-image-container {
   overflow: hidden;
-  max-height: 60vh;
+  max-height: 65vh;
   object-fit: cover;
   width: 100%;
   aspect-ratio: 16/9;

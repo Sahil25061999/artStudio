@@ -13,6 +13,7 @@ import {
   Signup,
   History,
   SingleVideoPage,
+  SearchPage,
 } from './pages/pages_index';
 import {
   Navbar,
@@ -43,6 +44,9 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/search/:searchQuery" element={<SearchPage />} />
+
+        {/* Private Routes */}
         <Route
           path="/watchlater"
           element={
@@ -51,6 +55,7 @@ function App() {
             </RequiresAuth>
           }
         />
+
         <Route
           path="/history"
           element={
@@ -59,7 +64,6 @@ function App() {
             </RequiresAuth>
           }
         />
-
         <Route path="/videolist" element={<VideoList />} />
         <Route path="/Mockman" element={<Mockman />} />
         <Route

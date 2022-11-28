@@ -25,6 +25,10 @@
   text-overflow: ellipsis;
 }
 
+.video-card-single .card-head {
+  padding-left: 0;
+}
+
 .video-card-single .video-card-foot {
   grid-column: 2;
 }

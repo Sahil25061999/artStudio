@@ -9,3 +9,4 @@ export { Login } from './Authentication/Login/Login';
 export { Signup } from './Authentication/Signup/Signup';
 export { History } from './History/History';
 export { SingleVideoPage } from './SingleVideoPage/SingleVideoPage';
+export { SearchPage } from './SearchPage/SearchPage';

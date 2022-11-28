@@ -38,7 +38,7 @@
   overscroll-behavior-inline: contain;
   gap: 0;
   margin: auto;
-  width: 92.5%;
+  width: 92%;
 }
 
 .categories-container::-webkit-scrollbar-thumb {
@@ -56,9 +56,6 @@
   z-index: 5;
   display: flex;
   justify-content: space-between;
-}
-.linear-gradient-container {
-  width: 95%;
 }
 
 .scroll-btn-container .btn {
@@ -91,6 +88,7 @@
 } */
 
 .linear-gradient-container {
+  width: 98.5%;
   margin-inline: auto;
   bottom: 6%;
   height: 85%;
@@ -107,7 +105,7 @@
 .left-gradient {
   background-image: linear-gradient(
     to right,
-    var(--secondary-bg-color),
+    var(--secondary-bg-color) 79%,
     transparent
   );
 }
@@ -115,7 +113,7 @@
 .right-gradient {
   background-image: linear-gradient(
     to left,
-    var(--secondary-bg-color),
+    var(--secondary-bg-color) 80%,
     transparent
   );
 }
@@ -132,3 +130,14 @@
   flex-wrap: wrap;
   gap: 1.8rem;
 } */
+
+@media screen and (max-width: 1200px) {
+  .categories-container {
+    width: 100%;
+  }
+
+  .scroll-btn-container,
+  .linear-gradient-container {
+    display: none;
+  }
+}

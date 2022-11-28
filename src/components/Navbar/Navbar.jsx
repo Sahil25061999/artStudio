@@ -1,45 +1,80 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate, NavLink } from 'react-router-dom';
 import { Search } from '../components_index';
+import { useAuth } from '../../context/context_index';
+import { getToken } from '../../utils/utils_index';
+import logo from '../../assets/logo/ArtStudio logo.svg';
+
 import './Navbar.css';
 
 export const Navbar = () => {
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [drawerClicked, setDrawerClickState] = useState(false);
   const [drawerClose, setDrawerCloseState] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
+  const token = getToken();
+
   const { pathname: currentPath } = location;
   const handleDrawer = () => {
     setDrawerCloseState(!drawerClose);
     setDrawerClickState(!drawerClicked);
   };
+  // useEffect(() => {
+  //   token?.length ? setIsLoggedIn(true) : setIsLoggedIn(false);
+  // }, []);
 
   return (
     <>
-      <header className="navigation">
-        <div className="logo-container ">
-          <h2 className="title">
-            Art<span className="title-studio">Studio</span>
-          </h2>
-        </div>
-        {(() => {
-          if (currentPath !== '/login' && currentPath !== '/signup') {
-            return (
-              <nav className="navigation-menu">
-                <ul className="navigation-list list-style-none d-flex">
-                  <li className="navigation-item">
-                    <Search />
-                  </li>
-                  <li className="navigation-item">
-                    <a href="#" className="navigation-link btn">
-                      signup
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            );
-          }
-        })()}
-      </header>
+      <div className="navigation-container">
+        <header className="navigation">
+          <NavLink to="/">
+            <div className="logo-container ">
+              <img className="logo-image" src={logo} />
+              <h3 className="title">
+                Art<span className="title-studio">Studio</span>
+              </h3>
+            </div>
+          </NavLink>
+
+          {(() => {
+            if (currentPath !== '/login' && currentPath !== '/signup') {
+              return (
+                <nav className="navigation-menu">
+                  <ul className="navigation-list list-style-none d-flex">
+                    <li className="navigation-item">
+                      <Search />
+                    </li>
+                    <li className="navigation-item">
+                      {!isLoggedIn ? (
+                        <NavLink
+                          className=" auth-btn btn btn-only-icon btn-square"
+                          to="login"
+                        >
+                          <span className="fa-solid fa-user navigation-icon"></span>
+                          <span className="">Login</span>
+                        </NavLink>
+                      ) : (
+                        <button
+                          className="auth-btn btn btn-only-icon btn-square"
+                          onClick={() => {
+                            localStorage.removeItem('token');
+                            setIsLoggedIn(false);
+                            navigate('/login', { replace: true });
+                          }}
+                        >
+                          <span className="fa-solid fa-user navigation-icon"></span>
+                          <span className="">logout </span>
+                        </button>
+                      )}
+                    </li>
+                  </ul>
+                </nav>
+              );
+            }
+          })()}
+        </header>
+      </div>
       {/* <header className="navigation navigation-responsive">
         <div className="logo-container">
           <h2>Navbar</h2>

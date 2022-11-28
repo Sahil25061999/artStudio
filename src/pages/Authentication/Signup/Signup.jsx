@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import { useToken } from '../../../context/context_index';
+import { useAuth } from '../../../context/context_index';
 import hero3 from '../../../assets/image/hero image/hero3.webp';
 
 import './signup.css';
 
 export const Signup = () => {
   const [{ name, email, password }, setAuth] = useState({});
-  const { token, setToken } = useToken();
+  const { setIsLoggedIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -21,6 +21,7 @@ export const Signup = () => {
         name,
       });
       localStorage.setItem('token', signUpResp.data.encodedToken);
+      setIsLoggedIn(true);
       navigate(location.state?.from?.pathname || '/', { replace: true });
       // setToken(signUpResp.data.encodedToken);
     } catch (error) {
@@ -41,8 +42,8 @@ export const Signup = () => {
         </div>
       </section>
       <section className="form-section">
-        <h2 className="form-title">Sign Up</h2>
         <form className="form-container ">
+          <h2 className="form-title">Sign Up</h2>
           <div className="form-input-container margin-t-b-10">
             <label className="form-label margin-b-5" htmlFor="name">
               Name
@@ -103,7 +104,13 @@ export const Signup = () => {
           </div>
 
           <div className="form-input-container margin-t-b-10">
-            <p className="text-center">Already have an account ? Login</p>
+            <p className="text-center">
+              Already have an account ?
+              <Link className="link-text" to="/login">
+                {' '}
+                Login
+              </Link>
+            </p>
           </div>
         </form>
       </section>

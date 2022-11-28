@@ -131,8 +131,8 @@ export const VideoCard = ({ video }) => {
         />
       </div>
       <div className="card-head">
-        <h4 className="card-heading ">{videoTitle}</h4>
-        <p className="vide-card-subheading">{channelName}</p>
+        <h4 className="card-heading h4">{videoTitle}</h4>
+        <p className="video-card-subheading h5">{channelName}</p>
         {/* <p className="video-card-subheading">{video.dateUploaded}</p> */}
       </div>
       {/* <div className="card-content"></div> */}

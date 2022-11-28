@@ -1,17 +1,8 @@
 import React, { useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/context_index';
-import { getToken } from '../../utils/utils_index';
 import './SideNavbar.css';
 
 export const SideNavbar = () => {
-  const { isLoggedIn, setIsLoggedIn } = useAuth();
-  const navigate = useNavigate();
-  const token = getToken();
-  useEffect(() => {
-    token?.length ? setIsLoggedIn(true) : setIsLoggedIn(false);
-  }, []);
-
   return (
     <div className="side-navbar">
       <ul className="list-style-none side-nav-list">
@@ -45,26 +36,7 @@ export const SideNavbar = () => {
             <span className="fas fa-heart side-nav-icon"></span>
           </NavLink>
         </li>
-        <li>
-          {!isLoggedIn ? (
-            <NavLink className="side-nav-item" to="login">
-              <span className="side-nav-text">Login</span>
-              <span className="fa-solid fa-user side-nav-icon"></span>
-            </NavLink>
-          ) : (
-            <button
-              className="logout-btn side-nav-item"
-              onClick={() => {
-                localStorage.removeItem('token');
-                setIsLoggedIn(false);
-                navigate('/login', { replace: true });
-              }}
-            >
-              <span className="side-nav-text">Logout</span>
-              <span className="fa-solid fa-user side-nav-icon"></span>
-            </button>
-          )}
-        </li>
+
         {/* <li>
           <NavLink className="side-nav-item" to="signup">
             <span className="side-nav-text">Signup</span>

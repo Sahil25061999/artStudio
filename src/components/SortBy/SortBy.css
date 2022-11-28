@@ -16,16 +16,23 @@
   padding: 0.5rem 0.62rem;
   border-radius: 0.5rem;
   z-index: 1;
-  transform: scaleY(0);
+  transform: translateY(-10px);
+  opacity: 0;
+  pointer-events: none;
   transform-origin: top;
-  transition: 0.3s;
+  transition: all 150ms;
 }
 
 .sort-by-values-list.display-list {
-  transform: scaleY(1);
+  transform: translateY(0);
+  opacity: 1;
 }
 .sort-list-items {
   padding-block: 0.5rem;
+}
+
+.sort-by-values-list.sort-by-values-list.display-list .sort-list-items {
+  pointer-events: auto;
 }
 
 .sort-list-items:hover,
@@ -34,8 +41,14 @@
 }
 
 .sort-list-items label::before {
-  content: '😶';
+  /* content: '\f192'; */
+
   visibility: hidden;
+}
+
+.sort-list-items input:checked + label {
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 .sort-list-items input:checked ~ label::before {

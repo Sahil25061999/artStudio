@@ -4,6 +4,8 @@ const FilterContext = createContext();
 
 const reducFunc = (state, action) => {
   switch (action.type) {
+    case 'SEARCH':
+      return { ...state, search: action.payload };
     case 'CATEGORY':
       return { ...state, category: action.payload };
     case 'DATE':
@@ -27,6 +29,7 @@ const reducFunc = (state, action) => {
 
 export const FilterProvider = ({ children }) => {
   const [filter, dispatchFilter] = useReducer(reducFunc, {
+    search: '',
     category: 'all',
     sort: { date: true, ascending: true, alphabet: false, descending: false },
   });
