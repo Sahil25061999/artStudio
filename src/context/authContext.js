@@ -9,7 +9,9 @@ export const AuthProvider = ({ children }) => {
   console.log(token);
 
   useEffect(() => {
-    if (token?.length !== 0) return setIsLoggedIn(true);
+    if (token?.length > 0) {
+      return setIsLoggedIn(true);
+    }
   }, []);
 
   return (

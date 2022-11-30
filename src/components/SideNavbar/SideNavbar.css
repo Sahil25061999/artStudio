@@ -58,7 +58,6 @@
 }
 
 .side-nav-text {
-  /* margin-right: 2rem; */
   margin-right: 1.28rem;
 }
 
@@ -84,12 +83,6 @@
   transform: scaleX(1);
 }
 
-/* .logout-btn:hover {
-  background: none;
-  border: none;
-  cursor: pointer;
-} */
-
 @media screen and (max-width: 596px) {
   .side-navbar {
     justify-content: center;
@@ -102,9 +95,6 @@
 
   .side-nav-list {
     width: 100%;
-    /* height: 100%; */
-
-    /* padding-bottom: 0; */
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;
@@ -112,7 +102,6 @@
 
   .side-nav-list,
   .side-nav-list:hover {
-    /* height: 100%; */
     transform: translateX(0);
     background-image: linear-gradient(to top, rgb(0, 0, 0.8) 60%, transparent);
   }

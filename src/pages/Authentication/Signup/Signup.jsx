@@ -16,9 +16,9 @@ export const Signup = () => {
     e.preventDefault();
     try {
       const signUpResp = await axios.post('/api/auth/signup', {
-        email,
-        password,
-        name,
+        email: email,
+        password: password,
+        name: name,
       });
       localStorage.setItem('token', signUpResp.data.encodedToken);
       setIsLoggedIn(true);
@@ -83,16 +83,7 @@ export const Signup = () => {
               }
             />
           </div>
-          {/* <div className="form-input-container margin-t-b-10">
-            <label className="form-label margin-b-5" htmlFor="re-password">
-              Confirm Password
-            </label>
-            <input
-              id="password"
-              className="form-input textbox"
-              type="password"
-            />
-          </div> */}
+
           <div className="form-input-container margin-t-b-10">
             <button
               className="btn signup-btn"

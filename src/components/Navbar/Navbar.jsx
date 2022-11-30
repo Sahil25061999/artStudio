@@ -9,20 +9,11 @@ import './Navbar.css';
 
 export const Navbar = () => {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
-  const [drawerClicked, setDrawerClickState] = useState(false);
-  const [drawerClose, setDrawerCloseState] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
   const token = getToken();
 
   const { pathname: currentPath } = location;
-  const handleDrawer = () => {
-    setDrawerCloseState(!drawerClose);
-    setDrawerClickState(!drawerClicked);
-  };
-  // useEffect(() => {
-  //   token?.length ? setIsLoggedIn(true) : setIsLoggedIn(false);
-  // }, []);
 
   return (
     <>

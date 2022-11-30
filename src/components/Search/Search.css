@@ -35,9 +35,3 @@
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
 }
-
-/* @media screen and (max-width: 594px) {
-  .search-box {
-    display: none;
-  }
-} */

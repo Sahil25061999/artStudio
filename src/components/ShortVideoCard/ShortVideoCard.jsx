@@ -1,8 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
-// import './VideoCard.css';
 import { useCurrVideo, useHistory } from '../../context/context_index';
 import { getToken } from '../../utils/utils_index';
 

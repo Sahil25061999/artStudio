@@ -2,15 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../../context/context_index';
 import axios from 'axios';
-
-// import { useToken } from '../../../context/context_index';
 import hero3 from '../../../assets/image/hero image/hero3.webp';
-
 import '../Signup/signup.css';
 
 export const Login = () => {
   const [{ email, password }, setAuth] = useState({});
-  // const { token, setToken } = useToken();
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,14 +15,12 @@ export const Login = () => {
     e.preventDefault();
     try {
       const loginResp = await axios.post('/api/auth/login', {
-        email,
-        password,
+        email: email,
+        password: password,
       });
-
       localStorage.setItem('token', loginResp.data.encodedToken);
       setIsLoggedIn(true);
       navigate(location.state?.from?.pathname || '/', { replace: true });
-      // setToken(signUpResp.data.encodedToken);
     } catch (error) {
       console.error(error);
     }
@@ -73,16 +67,6 @@ export const Login = () => {
               }
             />
           </div>
-          {/* <div className="form-input-container margin-t-b-10">
-            <label className="form-label margin-b-5" htmlFor="re-password">
-              Confirm Password
-            </label>
-            <input
-              id="password"
-              className="form-input textbox"
-              type="password"
-            />
-          </div> */}
           <div className="form-input-container margin-t-b-10">
             <button
               className="btn signup-btn"

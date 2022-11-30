@@ -36,13 +36,6 @@ export const SideNavbar = () => {
             <span className="fas fa-heart side-nav-icon"></span>
           </NavLink>
         </li>
-
-        {/* <li>
-          <NavLink className="side-nav-item" to="signup">
-            <span className="side-nav-text">Signup</span>
-            <span className="fa-solid fa-user-plus side-nav-icon"></span>
-          </NavLink>
-        </li> */}
       </ul>
     </div>
   );

@@ -1,24 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { getDocumentTitle } from '../../utils/utils_index';
 import { useDocumentTitle } from '../../hook/useDocumentTitle';
-import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import {
   useWatchLater,
   usePlaylist,
-  useVideoList,
   useLikedList,
   useCurrVideo,
-  useHistory,
 } from '../../context/context_index';
-import { getToken } from '../../utils/utils_index';
 import './SingleVideoCard.css';
 
 export const SingleVideoCard = () => {
-  const counter = 0;
-  const { likedList, setLikedList } = useLikedList();
-  const { watchLaterList, setWatchLaterList } = useWatchLater();
-  const { dispatchPlaylistModal } = usePlaylist();
   const { currVideo } = useCurrVideo();
   const {
     creator: channelName,
@@ -29,63 +19,23 @@ export const SingleVideoCard = () => {
   } = currVideo;
   const [like, setLike] = useState(liked);
   const [watchLater, setWatchLater] = useState(watchlater);
-  const token = getToken();
-  axios.defaults.headers.common['authorization'] = token;
+  const { likedList, likedVideoBtn, dislikeVideoBtn } = useLikedList();
+  const { watchLaterList, addToWatchLaterBtn, removeFromWatchLaterBtn } =
+    useWatchLater();
+  const { dispatchPlaylistModal } = usePlaylist();
 
   useDocumentTitle(currVideo.title, currVideo);
-
-  const addToWatchLaterBtn = async () => {
-    try {
-      const watchLaterResp = await axios.post('/api/user/watchlater', {
-        currVideo,
-      });
-      setWatchLaterList(() => watchLaterResp.data.watchlater);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  const removeFromWatchLaterBtn = async () => {
-    try {
-      const removeWatchLaterResp = await axios.delete(
-        `/api/user/watchlater/${currVideo._id}`
-      );
-      setWatchLaterList(() => removeWatchLaterResp.data.watchlater);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-  const likedVideoBtn = async (e) => {
-    try {
-      const likeResp = await axios.post('/api/user/likes', { currVideo });
-      setLikedList(() => likeResp.data.likes);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  const dislikeVideoBtn = async (e) => {
-    try {
-      const dislikeResp = await axios.delete(
-        `/api/user/likes/${currVideo._id}`
-      );
-      setLikedList(() => dislikeResp.data.likes);
-    } catch (e) {
-      console.error(e);
-    }
-  };
 
   const openPlaylistModal = () => {
     dispatchPlaylistModal({ type: 'OPEN_MODAL', payload: currVideo });
   };
 
   useEffect(() => {
-    console.log(likedList);
     setLike(
-      likedList.some(({ _id: currVidId }) => currVidId === currVideo._id)
+      likedList?.some(({ _id: currVidId }) => currVidId === currVideo._id)
     );
     setWatchLater(
-      watchLaterList.some(({ _id: currVidId }) => currVidId === currVideo._id)
+      watchLaterList?.some(({ _id: currVidId }) => currVidId === currVideo._id)
     );
     window.scrollTo(0, 0);
   }, [likedList, watchLaterList, currVideo]);
@@ -122,7 +72,7 @@ export const SingleVideoCard = () => {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                dislikeVideoBtn();
+                dislikeVideoBtn(currVideo);
               }}
               className="btn-like-active btn btn-only-icon card-action-btn "
             >
@@ -132,7 +82,7 @@ export const SingleVideoCard = () => {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                likedVideoBtn();
+                likedVideoBtn(currVideo);
               }}
               className="btn btn-only-icon card-action-btn"
             >
@@ -143,7 +93,7 @@ export const SingleVideoCard = () => {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                removeFromWatchLaterBtn();
+                removeFromWatchLaterBtn(currVideo);
               }}
               className="btn-like-active btn btn-only-icon card-action-btn"
             >
@@ -153,7 +103,7 @@ export const SingleVideoCard = () => {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                addToWatchLaterBtn();
+                addToWatchLaterBtn(currVideo);
               }}
               className=" btn btn-only-icon card-action-btn"
             >

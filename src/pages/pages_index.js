@@ -1,5 +1,4 @@
 export { Homepage } from './Homepage/Homepage';
-export { VideoList } from './VideoList/VideoList';
 export { WatchLater } from './WatchLater/WatchLater';
 export { LikedList } from './LikedList/LikedList';
 export { Playlist } from './Playlist/Playlist';

@@ -1,24 +1,12 @@
 .video-card {
   margin: 0;
   box-shadow: none;
-
-  /* max-height: 15rem; */
-  /* width: 20rem; */
-  /* height: fit-content; */
-  /* max-width: min(20rem, 100%); */
   width: 100%;
   color: var(--primary-text-color);
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
-
-  /* display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 0.5fr 0.5fr; */
-  /* aspect-ratio: 16/9; */
-  /* aspect-ratio: 3/2; */
-  /* margin: 0.5rem; */
 }
 
 .video-card:hover {
@@ -26,7 +14,6 @@
 }
 
 .video-card .card-head {
-  /* width: 12rem; */
   padding: 0;
   grid-column: span 2;
   grid-row: 2;
@@ -46,15 +33,6 @@
 }
 
 .card-image-container {
-  /* position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0; */
-  /* Added later*/
-  /* height: 65%; */
-  /* grid-column: 1 / span 3; */
   height: 10.5rem;
   width: 100%;
   overflow: hidden;
@@ -62,31 +40,21 @@
   aspect-ratio: 16/9;
 }
 
-/* Added later */
-/* .video-card-image {
-  border-radius: 0.5rem;
-} */
-/*      */
-
 .card-foot .btn-like-active {
   color: var(--accent-color);
 }
 
 .video-card-foot {
   padding: 0;
-  /* grid-column: auto / span 3; */
-  /* grid-row: 2; */
   align-self: center;
   justify-self: end;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
 }
 .card-action-btn {
   height: 2rem;
   width: 2rem;
   color: var(--primary-text-color);
-  /* background-color: var(--modal-card-background-color); */
   padding: 8px;
   margin-right: 0.2rem;
   border: none;
@@ -94,44 +62,8 @@
 
 .card-action-btn:hover {
   box-shadow: none;
-
-  /* filter: brightness(0%); */
-  /* color: var(--primary-text-color); */
 }
 
 .card-action-btn:active {
   transform: translateY(4px);
 }
-/* 
-.delete-btn {
-  position: absolute;
-  right: 0;
-  top: 5px;
-  box-shadow: 1px 2px 2px rgb(24, 22, 22);
-  background-color: var(--modal-card-background-color);
-} */
-
-/* 
-
-@media screen and (min-width: 524px) {
-  .card {
-    width: 18rem;
-  }
-
-  .video-card-container .card-head,
-  .video-card-container .card-foot,
-  .video-card-container .card-content {
-    padding: 0;
-  }
-} */
-
-/* @media screen and (min-width: 1300px) {
-  .video-card {
-    max-width: 25rem;
-  }
-} */
-
-/* .video-card:first-child,
-.video-card:nth-child(2) {
-  max-width: 24rem;
-} */

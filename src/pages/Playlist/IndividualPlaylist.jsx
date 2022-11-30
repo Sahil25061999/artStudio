@@ -7,11 +7,11 @@ import { getToken } from '../../utils/utils_index';
 import { useDocumentTitle } from '../../hook/hook_index';
 
 export const IndividualPlaylist = () => {
-  const token = getToken();
   const { videoInformation } = useVideoList();
   const { playlist, dispatchPlaylistModal } = usePlaylist();
   const [playlistTitle, setPlaylistTitle] = useState('');
   const [playlistVideoList, setPlaylistVideoList] = useState([]);
+  const token = getToken();
   let { playlistId } = useParams();
 
   useEffect(() => {

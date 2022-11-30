@@ -5,7 +5,10 @@ const FilterContext = createContext();
 const reducFunc = (state, action) => {
   switch (action.type) {
     case 'SEARCH':
-      return { ...state, search: action.payload };
+      return {
+        ...state,
+        search: action.payload,
+      };
     case 'CATEGORY':
       return { ...state, category: action.payload };
     case 'DATE':

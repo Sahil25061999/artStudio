@@ -4,7 +4,6 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 
 import {
   Homepage,
-  VideoList,
   WatchLater,
   LikedList,
   Playlist,
@@ -45,6 +44,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/search/:searchQuery" element={<SearchPage />} />
+        <Route path="/search/" element={<SearchPage />} />
 
         {/* Private Routes */}
         <Route
@@ -64,8 +64,6 @@ function App() {
             </RequiresAuth>
           }
         />
-        <Route path="/videolist" element={<VideoList />} />
-        <Route path="/Mockman" element={<Mockman />} />
         <Route
           path="/likedlist"
           element={

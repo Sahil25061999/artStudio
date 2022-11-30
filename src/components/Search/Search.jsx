@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useFilter } from '../../context/context_index';
 import './Search.css';
 
 export const Search = () => {
-  // const [displaySearch, setDisplaySearch] = useState();
-
   const [searchText, setSearchText] = useState('');
-  const [searhParams, setSearchParams] = useState();
   const { dispatchFilter } = useFilter();
-  // const searchQuery = searhParams.get('searchQuery');
-
   const navigate = useNavigate();
 
   const handleSearchText = (e) => {
-    setSearchText(e.target.value);
+    let { value } = e.target;
+    setSearchText(value);
   };
 
   return (

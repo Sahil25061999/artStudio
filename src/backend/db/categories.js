@@ -48,44 +48,4 @@ export const categories = [
     categoryName: 'education',
     iconSrc: 'fa-music',
   },
-  {
-    _id: uuid(),
-    categoryName: 'education',
-    iconSrc: 'fa-music',
-  },
-  {
-    _id: uuid(),
-    categoryName: 'education',
-    iconSrc: 'fa-music',
-  },
-  {
-    _id: uuid(),
-    categoryName: 'education',
-    iconSrc: 'fa-music',
-  },
-  {
-    _id: uuid(),
-    categoryName: 'education',
-    iconSrc: 'fa-music',
-  },
-  {
-    _id: uuid(),
-    categoryName: 'education',
-    iconSrc: 'fa-music',
-  },
-  {
-    _id: uuid(),
-    categoryName: 'education',
-    iconSrc: 'fa-music',
-  },
-  {
-    _id: uuid(),
-    categoryName: 'education',
-    iconSrc: 'fa-music',
-  },
-  {
-    _id: uuid(),
-    categoryName: 'education',
-    iconSrc: 'fa-music',
-  },
 ];

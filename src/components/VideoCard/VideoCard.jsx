@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
-
 import './VideoCard.css';
 import {
   useWatchLater,
@@ -11,99 +10,32 @@ import {
   useCurrVideo,
   useHistory,
 } from '../../context/context_index';
-import { addToWatchLater } from '../../api-call/api-call_index';
+
 import { getToken } from '../../utils/utils_index';
 
 export const VideoCard = ({ video }) => {
-  const { videoInformation, setVideoInformation } = useVideoList();
-  const { likedList, setLikedList } = useLikedList();
-  const { historyList, setHistoryList } = useHistory();
-  const { watchLaterList, setWatchLaterList } = useWatchLater();
-  const { currVideo, setCurrVideo } = useCurrVideo();
+  const { thumbnailSrc, creator: channelName, title: videoTitle } = video;
   const [like, setLike] = useState(false);
   const [watchLater, setWatchLater] = useState(false);
-  const token = getToken();
+  const { likedList, likedVideoBtn, dislikeVideoBtn } = useLikedList();
+  const { addToHistory, removeFromHistory } = useHistory();
+  const { watchLaterList, addToWatchLaterBtn, removeFromWatchLaterBtn } =
+    useWatchLater();
+  const { setCurrVideo } = useCurrVideo();
+
   const { dispatchPlaylistModal } = usePlaylist();
-  const { thumbnailSrc, creator: channelName, title: videoTitle } = video;
+
   const navigate = useNavigate();
   const location = useLocation();
-  axios.defaults.headers.common['authorization'] = token;
-
-  // console.log(location);
-
-  const addToWatchLaterBtn = async () => {
-    try {
-      const watchLaterResp = await axios.post('/api/user/watchlater', {
-        video,
-      });
-      setWatchLaterList(() => watchLaterResp.data.watchlater);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  const removeFromWatchLaterBtn = async () => {
-    try {
-      const removeWatchLaterResp = await axios.delete(
-        `/api/user/watchlater/${video._id}`
-      );
-      setWatchLaterList(() => removeWatchLaterResp.data.watchlater);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-  const likedVideoBtn = async (e) => {
-    try {
-      const likeResp = await axios.post('/api/user/likes', { video });
-      setLikedList(() => likeResp.data.likes);
-
-      // setVideoInformation([
-      //   ...videoInformation.map((currVideo) => {
-      //     if (currVideo._id == video._id) {
-      //       return { ...video, liked: !video.liked };
-      //     }
-      //     return { ...currVideo };
-      //   }),
-      // ]);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  const dislikeVideoBtn = async (e) => {
-    try {
-      const dislikeResp = await axios.delete(`/api/user/likes/${video._id}`);
-      setLikedList(() => dislikeResp.data.likes);
-    } catch (e) {
-      console.error(e);
-    }
-  };
 
   const openPlaylistModal = () => {
     dispatchPlaylistModal({ type: 'OPEN_MODAL', payload: video });
   };
 
-  const handleVideoClick = async () => {
+  const handleVideoClick = () => {
     setCurrVideo(() => ({ ...video }));
-    try {
-      navigate(`/watch/${video._id}`);
-      const historyResp = await axios.post('/api/user/history', { video });
-      setHistoryList(() => historyResp.data.history);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  const handleDelete = async () => {
-    try {
-      const deleteHistoryResp = await axios.delete(
-        `/api/user/history/${video._id}`
-      );
-
-      setHistoryList(() => deleteHistoryResp.data.history);
-    } catch (e) {
-      console.error(e);
-    }
+    navigate(`/watch/${video._id}`);
+    addToHistory(video);
   };
 
   useEffect(() => {
@@ -114,14 +46,7 @@ export const VideoCard = ({ video }) => {
   }, [likedList, watchLaterList]);
 
   return (
-    <div
-      className="video-card "
-      onClick={() => handleVideoClick()}
-      // style={{
-      //   backgroundImage: ` linear-gradient(to top,black,rgba(255,255,255,.2)),url(${thumbnailSrc})
-      //   `,
-      // }}
-    >
+    <div className="video-card " onClick={() => handleVideoClick()}>
       <div className="card-image-container">
         <img
           className="card-image video-card-image"
@@ -135,7 +60,6 @@ export const VideoCard = ({ video }) => {
         <p className="video-card-subheading h5">{channelName}</p>
         {/* <p className="video-card-subheading">{video.dateUploaded}</p> */}
       </div>
-      {/* <div className="card-content"></div> */}
       <div className="card-foot video-card-foot">
         <div>
           <button
@@ -152,7 +76,7 @@ export const VideoCard = ({ video }) => {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                dislikeVideoBtn();
+                dislikeVideoBtn(video);
               }}
               className="btn-like-active btn btn-only-icon card-action-btn "
             >
@@ -162,7 +86,7 @@ export const VideoCard = ({ video }) => {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                likedVideoBtn();
+                likedVideoBtn(video);
               }}
               className="btn btn-only-icon card-action-btn"
             >
@@ -173,7 +97,7 @@ export const VideoCard = ({ video }) => {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                removeFromWatchLaterBtn();
+                removeFromWatchLaterBtn(video);
               }}
               className="btn-like-active btn btn-only-icon card-action-btn"
             >
@@ -183,7 +107,7 @@ export const VideoCard = ({ video }) => {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                addToWatchLaterBtn();
+                addToWatchLaterBtn(video);
               }}
               className=" btn btn-only-icon card-action-btn"
             >
@@ -195,7 +119,7 @@ export const VideoCard = ({ video }) => {
           <button
             onClick={(e) => {
               e.stopPropagation();
-              handleDelete();
+              removeFromHistory(video);
             }}
             className="btn btn-only-icon card-action-btn  delete-btn"
           >

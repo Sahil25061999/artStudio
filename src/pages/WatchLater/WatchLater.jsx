@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useVideoList, useWatchLater } from '../../context/context_index';
 import { useDocumentTitle } from '../../hook/hook_index';
@@ -24,19 +24,6 @@ export const WatchLater = () => {
         console.error(e);
       }
     })();
-
-    // watchLikeListDispatch({
-    //   type: 'WATCH_LATER',
-    //   payload: watchLater
-    //     .map((item) => {
-    //       return videoInformation.filter((video) => {
-    //         if (video._id === item._id) {
-    //           return { ...video };
-    //         }
-    //       });
-    //     })
-    //     .reduce((accValue, currValue) => [...accValue, ...currValue], []),
-    // });
   }, [videoInformation]);
   return (
     <div className="video-page app">

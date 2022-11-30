@@ -10,36 +10,8 @@ import { useDocumentTitle } from '../../hook/hook_index';
 import { getToken } from '../../utils/utils_index';
 
 export const LikedList = () => {
-  // const { videoInformation } = useVideoList();
-  useDocumentTitle('Liked List | ArtStudio');
-  const token = getToken();
-
-  // const {
-  //   watchLikeList: { likedList },
-  //   watchLikeListDispatch,
-  // } = useWatchLikeList();
-  // console.log('first', likedList);
-
-  // useEffect(() => {
-  //   console.log('second', likedList);
-
-  //   watchLikeListDispatch({
-  //     type: 'LIKED_VIDEOS',
-  //     payload: [
-  //       ...likedList
-  //         .map((item) => {
-  //           return videoInformation.filter((video) => {
-  //             if (video._id === item._id) {
-  //               return { ...video };
-  //             }
-  //           });
-  //         })
-  //         .reduce((accValue, currValue) => [...accValue, ...currValue], []),
-  //     ],
-  //   });
-  // }, [videoInformation]);
-
   const { likedList, setLikedList } = useLikedList();
+  const token = getToken();
 
   useEffect(() => {
     (async () => {
@@ -53,6 +25,8 @@ export const LikedList = () => {
       }
     })();
   }, []);
+
+  useDocumentTitle('Liked List | ArtStudio');
 
   return (
     <div className="video-page app">

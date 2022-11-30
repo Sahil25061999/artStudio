@@ -1,31 +1,36 @@
-import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-import { useParams, useSearchParams } from 'react-router-dom';
-import { VideoCard, VideoList } from '../../components/components_index';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import {
-  useVideoList,
-  useWatchLikeList,
-  useLikedList,
-  useFilter,
-} from '../../context/context_index';
+  VideoCard,
+  VideoList,
+  SortBy,
+} from '../../components/components_index';
+import { useVideoList, useFilter } from '../../context/context_index';
 import { useDocumentTitle } from '../../hook/hook_index';
-import { getToken } from '../../utils/utils_index';
+import { getSortedList } from '../../utils/utils_index';
 
 export const SearchPage = () => {
   const { videoInformation } = useVideoList();
-  const {
-    filter: { search },
-  } = useFilter();
   const { searchQuery } = useParams();
-  let filteredList;
-  useDocumentTitle('Liked List | ArtStudio');
+  const {
+    filter: { search, sort },
+    dispatchFilter,
+  } = useFilter();
 
-  filteredList = videoInformation.filter((item) =>
-    item.title.toLowerCase().includes(search)
+  let filteredList = getSortedList(
+    videoInformation.filter((item) =>
+      item.title.toLowerCase().includes(search)
+    ),
+    sort
   );
+  useDocumentTitle(`${search} | ArtStudio`, search);
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [search]);
 
   return (
     <div className="video-page app">
+      <SortBy />
       <VideoList>
         {filteredList?.length &&
           filteredList.map((item) => <VideoCard video={item} />)}

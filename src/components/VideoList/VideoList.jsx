@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './VideoList.css';
 
-export const VideoList = ({ sectionTitle, children, categorySelected }) => {
+export const VideoList = ({ children, categorySelected }) => {
   const videoListContainer = useRef(null);
   useEffect(() => {
     console.log(videoListContainer.current);
@@ -9,7 +9,6 @@ export const VideoList = ({ sectionTitle, children, categorySelected }) => {
   }, [categorySelected]);
   return (
     <div className="video-list-section">
-      {/* <h2>{sectionTitle}</h2> */}
       <div className="list-container" ref={videoListContainer}>
         {children}
       </div>

@@ -41,8 +41,6 @@
 }
 
 .sort-list-items label::before {
-  /* content: '\f192'; */
-
   visibility: hidden;
 }
 
@@ -57,7 +55,6 @@
 
 .sort-list-items {
   position: relative;
-  /* pointer-events: auto; */
 }
 
 .sort-list-items input[type='radio'] {

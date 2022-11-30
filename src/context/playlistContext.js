@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState, useReducer } from 'react';
+import React, { useContext, createContext, useReducer } from 'react';
 
 const reducerFunc = (state, action) => {
   switch (action.type) {
@@ -27,7 +27,6 @@ const reducerFunc = (state, action) => {
 const PlaylistContext = createContext(null);
 
 export const PlaylistProvider = ({ children }) => {
-  // const [displayPlaylistModal, setPlaylistModal] = useState(false);
   const [
     { playlist, clickedVideo, displayPlaylistModal },
     dispatchPlaylistModal,
