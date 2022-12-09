@@ -7,13 +7,13 @@ import {
   CategoryProvider,
   VideoListProvider,
   CurrVideoProvider,
-  TokenProvider,
   WatchLaterProvider,
   PlaylistProvider,
   AuthProvider,
   LikedListProvider,
   HistoryProvider,
   FilterProvider,
+  SnackbarProvider,
 } from './context/context_index';
 import { BrowserRouter as Router } from 'react-router-dom';
 // Call make Server
@@ -22,8 +22,8 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <AuthProvider>
-        <TokenProvider>
+      <SnackbarProvider>
+        <AuthProvider>
           <CurrVideoProvider>
             <FilterProvider>
               <HistoryProvider>
@@ -41,8 +41,8 @@ ReactDOM.render(
               </HistoryProvider>
             </FilterProvider>
           </CurrVideoProvider>
-        </TokenProvider>
-      </AuthProvider>
+        </AuthProvider>
+      </SnackbarProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

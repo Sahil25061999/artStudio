@@ -1,14 +1,31 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import { usePlaylist, useSnackbar } from '../../context/context_index';
+import { getToken } from '../../utils/getToken';
 import '../VideoCard/VideoCard.css';
 import './PlaylistCard.css';
-import { useToken, usePlaylist } from '../../context/context_index';
 
 export const PlaylistCard = ({ playlist }) => {
-  const { token } = useToken();
   const { dispatchPlaylistModal } = usePlaylist();
+  const { dispatchSnacks } = useSnackbar();
+  const token = getToken();
+  const deletePlayist = async () => {
+    try {
+      const deletePlaylistResp = await axios.delete(
+        `/api/user/playlists/${playlist._id}`,
+        { headers: { authorizaton: token } }
+      );
+      dispatchPlaylistModal({
+        type: 'CREATE_PLAYLIST',
+        payload: [...deletePlaylistResp.data.playlists],
+      });
+      console.log(deletePlaylistResp);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const navigate = useNavigate();
   return (
     <div className="video-card playlist-card-container">
@@ -33,6 +50,19 @@ export const PlaylistCard = ({ playlist }) => {
             className="btn btn-only-icon card-action-btn  playlist-open-btn "
           >
             <span className="fas fa-folder-open"></span>
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              dispatchSnacks({
+                type: 'DISPLAY_SNACK',
+                payload: `${playlist.title} deleted.`,
+              });
+              deletePlayist();
+            }}
+            className="btn btn-only-icon card-action-btn  delete-playlist-btn"
+          >
+            <span className="fa-solid fa-trash "></span>
           </button>
         </div>
       </div>

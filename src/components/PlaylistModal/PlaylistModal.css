@@ -78,11 +78,22 @@
 }
 
 .checkbox-container {
-  width: max-content;
+  width: 100%;
   margin: auto;
+  padding-inline: clamp(1.5rem, 2rem, 3rem);
+  max-height: 15rem;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.checkbox-item {
+  padding-block: 0.5rem;
+}
+
+.error-input {
+  border: 1px solid red;
 }
 
 .modal-close-btn {

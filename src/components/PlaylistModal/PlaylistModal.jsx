@@ -3,21 +3,14 @@ import axios from 'axios';
 import {
   usePlaylist,
   useVideoList,
-  useWatchLater,
+  useSnackbar,
 } from '../../context/context_index';
 import { getToken } from '../../utils/utils_index';
 import './PlaylistModal.css';
 
 export const PlaylistModal = () => {
   const [title, setTitle] = useState('');
-
-  // const {
-  //   watchLikeList: { playlist },
-  //   watchLikeListDispatch,
-  // } = useWatchLikeList();
-  /*Temp data */
-  const [useWatchLikeList, watchLikeListDispatch] = [0, 0];
-  /*         */
+  const [error, setError] = useState(false);
   const {
     clickedVideo,
     playlist,
@@ -25,6 +18,7 @@ export const PlaylistModal = () => {
     dispatchPlaylistModal,
   } = usePlaylist();
   const { videoInformation, setVideoInformation } = useVideoList();
+  const { dispatchSnacks } = useSnackbar();
   const token = getToken();
 
   axios.defaults.headers.common['authorization'] = token;
@@ -35,6 +29,11 @@ export const PlaylistModal = () => {
 
   const createNewPlaylist = async (e) => {
     e.preventDefault();
+    if (title.length <= 0) {
+      setError(true);
+      return;
+    }
+    setError(false);
     try {
       const newPlayListResponse = await axios.post('/api/user/playlists', {
         playlist: { title: title },
@@ -43,11 +42,10 @@ export const PlaylistModal = () => {
         type: 'CREATE_PLAYLIST',
         payload: newPlayListResponse.data.playlists,
       });
-      // watchLikeListDispatch({
-      //   type: 'PLAYLIST',
-      //   payload: newPlayListResponse.data.playlists,
-      // });
-      // setPlaylist([...newPlayListResponse.data.playlists]);
+      dispatchSnacks({
+        type: 'DISPLAY_SNACK',
+        payload: `${title} playlist created.`,
+      });
     } catch (e) {
       console.error(e);
     }
@@ -85,7 +83,7 @@ export const PlaylistModal = () => {
             ],
           },
         });
-        console.log(playlistResponse);
+
         setVideoInformation(
           [...videoInformation].map((video) => {
             if (video._id === clickedVideo._id) {
@@ -109,8 +107,6 @@ export const PlaylistModal = () => {
 
   const savePlaylist = async (e) => {
     const checked = e.target.checked;
-    console.log(checked);
-
     /* if playlist is checked the video will be added to the playlist */
     if (checked) {
       try {
@@ -188,10 +184,12 @@ export const PlaylistModal = () => {
             </h3>
             <div className="modal-input-box">
               <input
-                className="textbox modal-input-title"
+                className={`textbox modal-input-title ${
+                  error ? 'error-input' : ''
+                }`}
                 id="title"
                 type="text"
-                placeholder="Enter a Title"
+                placeholder={error ? 'Input title please ' : 'Enter a Title'}
                 onChange={handleNewPlaylistTitle}
                 value={title}
               />
@@ -210,7 +208,7 @@ export const PlaylistModal = () => {
             <div className="checkbox-container">
               {playlist.map((item) => {
                 return (
-                  <label key={item._id} className="margin-r-10">
+                  <label key={item._id} className="margin-r-10 checkbox-item">
                     <input
                       name={item.title}
                       className="checkbox "

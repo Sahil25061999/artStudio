@@ -8,7 +8,7 @@ import logo from '../../assets/logo/ArtStudio logo.svg';
 import './Navbar.css';
 
 export const Navbar = () => {
-  const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const { auth, dispatchAuth } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const token = getToken();
@@ -37,7 +37,7 @@ export const Navbar = () => {
                       <Search />
                     </li>
                     <li className="navigation-item">
-                      {!isLoggedIn ? (
+                      {!auth.isLoggedIn ? (
                         <NavLink
                           className=" auth-btn btn btn-only-icon btn-square"
                           to="login"
@@ -50,7 +50,10 @@ export const Navbar = () => {
                           className="auth-btn btn btn-only-icon btn-square"
                           onClick={() => {
                             localStorage.removeItem('token');
-                            setIsLoggedIn(false);
+                            dispatchAuth({
+                              type: 'SIGN_IN_OUT',
+                              payload: false,
+                            });
                             navigate('/login', { replace: true });
                           }}
                         >

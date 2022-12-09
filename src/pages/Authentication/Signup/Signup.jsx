@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { checkEmail, checkPassword } from '../../../utils/utils_index';
 import axios from 'axios';
 import { useAuth } from '../../../context/context_index';
+import { useDocumentTitle } from '../../../hook/hook_index';
 import hero3 from '../../../assets/image/hero image/hero3.webp';
 
 import './signup.css';
 
 export const Signup = () => {
   const [{ name, email, password }, setAuth] = useState({});
-  const { setIsLoggedIn } = useAuth();
+  const { auth, dispatchAuth } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    if (!checkEmail(email)) {
+      dispatchAuth({ type: 'EMAIL_ERROR', payload: true });
+    }
+    if (!checkPassword(password)) {
+      dispatchAuth({ type: 'PASSWORD_ERROR', payload: true });
+      return;
+    }
+
     try {
       const signUpResp = await axios.post('/api/auth/signup', {
         email: email,
@@ -21,13 +31,14 @@ export const Signup = () => {
         name: name,
       });
       localStorage.setItem('token', signUpResp.data.encodedToken);
-      setIsLoggedIn(true);
+      dispatchAuth({ type: 'SIGN_IN_OUT', payload: true });
       navigate(location.state?.from?.pathname || '/', { replace: true });
-      // setToken(signUpResp.data.encodedToken);
     } catch (error) {
       console.error(error);
     }
   };
+
+  useDocumentTitle('Signup | ArtStudio');
 
   return (
     <main className="signup-page">
@@ -59,7 +70,10 @@ export const Signup = () => {
           </div>
           <div className="form-input-container margin-t-b-10">
             <label className="form-label margin-b-5" htmlFor="email">
-              Email
+              Email{' '}
+              {auth.error.emailErrorMsg && (
+                <span className="error-msg">enter valid email</span>
+              )}
             </label>
             <input
               id="email"
@@ -72,10 +86,14 @@ export const Signup = () => {
           </div>
           <div className="form-input-container margin-t-b-10">
             <label className="form-label margin-b-5" htmlFor="password">
-              Password
+              Password{' '}
+              {auth.error.passwordErrorMsg && (
+                <span className="error-msg">enter valid password</span>
+              )}
             </label>
             <input
               id="password"
+              placeholder="password must contain UpperCase,lowercase, alphanumeric characters"
               className="form-input textbox"
               type="password"
               onChange={(e) =>

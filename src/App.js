@@ -19,6 +19,7 @@ import {
   PlaylistModal,
   SideNavbar,
   RequiresAuth,
+  Snackbar,
 } from './components/components_index';
 import Mockman from 'mockman-js';
 
@@ -26,13 +27,12 @@ function App() {
   const location = useLocation();
   const { pathname: currentPath } = location;
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scroll(0, 0);
   }, []);
 
   return (
-    // <div className="App">
-
     <>
+      <Snackbar />
       <PlaylistModal />
       <Navbar />
       {(() => {

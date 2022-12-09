@@ -1,9 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
   Carousel,
   VideoCard,
   CategoryCard,
   VideoList,
+  Snackbar,
 } from '../../components/components_index';
 import {
   useCategory,
@@ -15,8 +16,6 @@ import { getSelectedCategoryList } from '../../utils/utils_index';
 import './Homepage.css';
 
 export const Homepage = () => {
-  const categoryContainer = useRef(null);
-
   const {
     filter: { category },
   } = useFilter();
@@ -24,12 +23,6 @@ export const Homepage = () => {
   const { videoInformation } = useVideoList();
 
   useDocumentTitle('ArtStudio');
-
-  const scrollOffset = 250;
-
-  const handleHorizontalScroll = (scrollOffset) => {
-    categoryContainer.current.scrollLeft += scrollOffset;
-  };
 
   const filteredList = getSelectedCategoryList(videoInformation, category);
 
@@ -42,14 +35,10 @@ export const Homepage = () => {
       <h2>Explore Now</h2>
 
       <div className="categories-section video-list-section">
-        <div className="categories-container" ref={categoryContainer}>
-          {categoryData.map(({ _id: id, iconSrc, categoryName }) => {
+        <div className="categories-container">
+          {categoryData.map(({ _id: id, categoryName }) => {
             return (
-              <CategoryCard
-                key={id}
-                iconSrc={iconSrc}
-                categoryName={categoryName}
-              />
+              <CategoryCard key={id} id={id} categoryName={categoryName} />
             );
           })}
         </div>

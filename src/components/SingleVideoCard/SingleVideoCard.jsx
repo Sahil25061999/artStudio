@@ -5,6 +5,8 @@ import {
   usePlaylist,
   useLikedList,
   useCurrVideo,
+  useSnackbar,
+  useAuth,
 } from '../../context/context_index';
 import './SingleVideoCard.css';
 
@@ -17,12 +19,16 @@ export const SingleVideoCard = () => {
     watchlater,
     source,
   } = currVideo;
+  const {
+    auth: { isLoggedIn },
+  } = useAuth();
   const [like, setLike] = useState(liked);
   const [watchLater, setWatchLater] = useState(watchlater);
   const { likedList, likedVideoBtn, dislikeVideoBtn } = useLikedList();
   const { watchLaterList, addToWatchLaterBtn, removeFromWatchLaterBtn } =
     useWatchLater();
   const { dispatchPlaylistModal } = usePlaylist();
+  const { dispatchSnacks } = useSnackbar();
 
   useDocumentTitle(currVideo.title, currVideo);
 
@@ -56,62 +62,80 @@ export const SingleVideoCard = () => {
         <p className="vide-card-subheading">{channelName}</p>
       </div>
       {/* <div className="card-content"></div> */}
-      <div className="card-foot video-card-foot">
-        <div>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              openPlaylistModal();
-            }}
-            className="btn btn-only-icon  card-action-btn"
-          >
-            {/* Open */}
-            <span className="fas fa-layer-group"></span>
-          </button>
-          {like ? (
+      {isLoggedIn ? (
+        <div className="card-foot video-card-foot">
+          <div>
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                dislikeVideoBtn(currVideo);
+                openPlaylistModal();
               }}
-              className="btn-like-active btn btn-only-icon card-action-btn "
+              className="btn btn-only-icon  card-action-btn"
             >
-              <span className="fas fa-thumbs-up"></span>
+              {/* Open */}
+              <span className="fas fa-layer-group"></span>
             </button>
-          ) : (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                likedVideoBtn(currVideo);
-              }}
-              className="btn btn-only-icon card-action-btn"
-            >
-              <span className="fas fa-thumbs-up"></span>
-            </button>
-          )}
-          {watchLater ? (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                removeFromWatchLaterBtn(currVideo);
-              }}
-              className="btn-like-active btn btn-only-icon card-action-btn"
-            >
-              <span className="fas fa-clock"></span>
-            </button>
-          ) : (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                addToWatchLaterBtn(currVideo);
-              }}
-              className=" btn btn-only-icon card-action-btn"
-            >
-              <span className="fas fa-clock"></span>
-            </button>
-          )}
+            {like ? (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  dispatchSnacks({
+                    type: 'DISPLAY_SNACK',
+                    payload: 'Remove from liked list',
+                  });
+                  dislikeVideoBtn(currVideo);
+                }}
+                className="btn-like-active btn btn-only-icon card-action-btn "
+              >
+                <span className="fas fa-thumbs-up"></span>
+              </button>
+            ) : (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  dispatchSnacks({
+                    type: 'DISPLAY_SNACK',
+                    payload: 'Add to liked list',
+                  });
+                  likedVideoBtn(currVideo);
+                }}
+                className="btn btn-only-icon card-action-btn"
+              >
+                <span className="fas fa-thumbs-up"></span>
+              </button>
+            )}
+            {watchLater ? (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  dispatchSnacks({
+                    type: 'DISPLAY_SNACK',
+                    payload: 'Removed from watchlater list',
+                  });
+                  removeFromWatchLaterBtn(currVideo);
+                }}
+                className="btn-like-active btn btn-only-icon card-action-btn"
+              >
+                <span className="fas fa-clock"></span>
+              </button>
+            ) : (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  dispatchSnacks({
+                    type: 'DISPLAY_SNACK',
+                    payload: 'Added to watchlater list',
+                  });
+                  addToWatchLaterBtn(currVideo);
+                }}
+                className=" btn btn-only-icon card-action-btn"
+              >
+                <span className="fas fa-clock"></span>
+              </button>
+            )}
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 };

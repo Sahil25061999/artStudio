@@ -28,6 +28,11 @@
   width: 2rem;
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-bg-color);
+  cursor: pointer;
+}
+
 .btn:hover {
   box-shadow: none;
 }

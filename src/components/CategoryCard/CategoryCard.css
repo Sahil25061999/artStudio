@@ -8,6 +8,11 @@
   background-color: var(--modal-card-background-color);
 }
 
+.category-card-container.category-selected {
+  background-color: var(--primary-bg-color);
+  color: var(--secondary-bg-color);
+}
+
 .category-card-container .card-head {
   padding-inline: 0.8rem;
 }
@@ -20,6 +25,9 @@
 .category-card-container:hover {
   cursor: pointer;
   background-color: var(--hover-color);
+}
+.category-card-container.category-selected:hover {
+  color: var(--primary-text-color);
 }
 
 .category-card-container:first-child {

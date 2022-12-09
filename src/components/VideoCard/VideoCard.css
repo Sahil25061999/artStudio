@@ -9,15 +9,15 @@
   position: relative;
 }
 
-.video-card:hover {
-  cursor: pointer;
-}
-
 .video-card .card-head {
   padding: 0;
   grid-column: span 2;
   grid-row: 2;
   justify-self: start;
+  cursor: pointer;
+}
+.video-card .card-head:hover {
+  text-decoration: underline;
 }
 
 .video-card-subheading {
@@ -38,6 +38,7 @@
   overflow: hidden;
   border-radius: 1.2rem;
   aspect-ratio: 16/9;
+  cursor: pointer;
 }
 
 .card-foot .btn-like-active {

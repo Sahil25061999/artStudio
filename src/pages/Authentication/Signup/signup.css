@@ -51,9 +51,7 @@
 }
 
 .form-container {
-  /* background-color: var(--modal-card-background-color); */
   border-radius: 0.5rem;
-  /* height: 90%; */
   width: 60vmin;
   margin-inline: auto;
 }
@@ -62,28 +60,15 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-}
-
-.form-label {
-  /* font-size: 1.5rem; */
-  /* color: rgb(91, 90, 90); */
+  position: relative;
 }
 
 .form-input {
-  /* width: 50%; */
-  /* height: 2.5rem;
-  width: 100%;
-  min-width: fit-content; */
   margin-bottom: 0.5rem;
-  /* margin: 0 0.5rem; */
-  /* background-color: rgb(24, 22, 22);
-  border: none;
-  color: var(--primary-text-color); */
 }
 
 .signup-btn {
   margin-top: 0.5rem;
-  /* width: 80%; */
   font-size: 1rem;
   background-color: var(--accent-color);
   color: var(--primary-text-color);
@@ -95,6 +80,10 @@
 
 .link-text {
   text-decoration: underline;
+}
+
+.error-msg {
+  color: var(--accent-color);
 }
 
 @media screen and (max-width: 864px) {

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import {
   SingleVideoCard,
   VideoList,
-  ShortVideoCard,
+  VideoCard,
 } from '../../components/components_index';
 import { useVideoList } from '../../context/context_index';
 import './SingleVideoPage.css';
@@ -31,7 +31,7 @@ export const SingleVideoPage = () => {
         <div className="suggested-video-container">
           <VideoList sectionTitle={''}>
             {videoInformation.map((item) => {
-              return <ShortVideoCard key={item._id} video={item} />;
+              return <VideoCard key={item._id} video={item} />;
             })}
           </VideoList>
         </div>

@@ -46,7 +46,7 @@ iframe {
   font-size: 1.2rem;
   z-index: 1;
   border: none;
-  color: var(--accent-color);
+  color: var(--secondary-bg-color);
   position: relative;
 }
 
@@ -62,7 +62,7 @@ iframe {
   transform: scaleX(0);
   transform-origin: left;
   transition: 0.5s;
-  background-color: var(--secondary-text-color);
+  background-color: var(--accent-color);
 }
 .btn-white:hover {
   box-shadow: none;
