@@ -9,7 +9,7 @@ import hero3 from '../../../assets/image/hero image/hero3.webp';
 import './signup.css';
 
 export const Signup = () => {
-  const [{ name, email, password }, setAuth] = useState({});
+  const [{ email, password }, setAuth] = useState({});
   const { auth, dispatchAuth } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -28,7 +28,6 @@ export const Signup = () => {
       const signUpResp = await axios.post('/api/auth/signup', {
         email: email,
         password: password,
-        name: name,
       });
       localStorage.setItem('token', signUpResp.data.encodedToken);
       dispatchAuth({ type: 'SIGN_IN_OUT', payload: true });
@@ -55,19 +54,7 @@ export const Signup = () => {
       <section className="form-section">
         <form className="form-container ">
           <h2 className="form-title">Sign Up</h2>
-          <div className="form-input-container margin-t-b-10">
-            <label className="form-label margin-b-5" htmlFor="name">
-              Name
-            </label>
-            <input
-              id="name"
-              className="form-input textbox"
-              type="text"
-              onChange={(e) =>
-                setAuth((prev) => ({ ...prev, name: e.target.value }))
-              }
-            />
-          </div>
+
           <div className="form-input-container margin-t-b-10">
             <label className="form-label margin-b-5" htmlFor="email">
               Email{' '}
@@ -93,7 +80,7 @@ export const Signup = () => {
             </label>
             <input
               id="password"
-              placeholder="password must contain UpperCase,lowercase, alphanumeric characters"
+              title="password must contain UpperCase,lowercase, alphanumeric characters"
               className="form-input textbox"
               type="password"
               onChange={(e) =>

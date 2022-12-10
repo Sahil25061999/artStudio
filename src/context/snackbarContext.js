@@ -6,23 +6,17 @@ const SnackbarContext = createContext();
 const snackReducerFunc = (state, action) => {
   switch (action.type) {
     case 'CLOSE_SNACK':
-      return { ...state, displaySnack: false, snacks: [] };
+      return [];
     case 'DISPLAY_SNACK':
-      return {
-        ...state,
-        displaySnack: true,
-        snacks: [...state.snacks, { _id: uuid(), content: action.payload }],
-      };
+      return [...state, { _id: uuid(), content: action.payload }];
     default:
-      return { ...state };
+      return [...state];
   }
 };
 
 export const SnackbarProvider = ({ children }) => {
-  const [{ snacks, displaySnack }, dispatchSnacks] = useReducer(
-    snackReducerFunc,
-    { snacks: [], displaySnack: false }
-  );
+  const [snacks, dispatchSnacks] = useReducer(snackReducerFunc, []);
+  const displaySnack = snacks.length > 0;
 
   useEffect(() => {
     if (displaySnack) {

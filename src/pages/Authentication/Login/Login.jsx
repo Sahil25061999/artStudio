@@ -56,7 +56,7 @@ export const Login = () => {
       <section className="form-section">
         <form className="form-container ">
           <h2 className="form-title">Login</h2>
-          <div className="form-input-container margin-t-b-10">
+          <div className="form-input-container margin-t-b-10 email-container">
             <label className="form-label margin-b-5" htmlFor="email">
               Email{' '}
               {auth.error.emailErrorMsg && (
@@ -72,7 +72,7 @@ export const Login = () => {
               }
             />
           </div>
-          <div className="form-input-container margin-t-b-10">
+          <div className="form-input-container margin-t-b-10 password-container">
             <label className="form-label margin-b-5" htmlFor="password">
               Password{' '}
               {auth.error.passwordErrorMsg && (
@@ -81,7 +81,7 @@ export const Login = () => {
             </label>
             <input
               id="password"
-              placeholder="password must contain UpperCase,lowercase, alphanumeric characters"
+              title="password must contain UpperCase,lowercase, alphanumeric characters"
               className="form-input textbox"
               type="password"
               onChange={(e) =>
