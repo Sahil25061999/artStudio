@@ -20,6 +20,7 @@ import {
   SideNavbar,
   RequiresAuth,
   Snackbar,
+  Footer,
 } from './components/components_index';
 import Mockman from 'mockman-js';
 
@@ -35,6 +36,7 @@ function App() {
       <Snackbar />
       <PlaylistModal />
       <Navbar />
+
       {(() => {
         if (currentPath !== '/login' && currentPath !== '/signup') {
           return <SideNavbar />;
@@ -92,6 +94,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/watch/:watchId" element={<SingleVideoPage />} />
       </Routes>
+      <Footer />
     </>
     // </div>
   );

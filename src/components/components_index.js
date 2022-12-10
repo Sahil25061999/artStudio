@@ -12,3 +12,4 @@ export { SingleVideoCard } from './SingleVideoCard/SingleVideoCard';
 export { ShortVideoCard } from './ShortVideoCard/ShortVideoCard';
 export { SortBy } from './SortBy/SortBy';
 export { Snackbar } from './Snackbar/Snackbar';
+export { Footer } from './Footer/Footer';
