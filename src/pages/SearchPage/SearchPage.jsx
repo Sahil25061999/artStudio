@@ -32,8 +32,13 @@ export const SearchPage = () => {
     <div className="video-page app">
       <SortBy />
       <VideoList>
-        {filteredList?.length &&
-          filteredList.map((item) => <VideoCard video={item} />)}
+        {filteredList?.length ? (
+          filteredList.map((item) => <VideoCard video={item} />)
+        ) : (
+          <h1 className="search-title">
+            No results for <b>"{search}"</b>
+          </h1>
+        )}
       </VideoList>
     </div>
   );

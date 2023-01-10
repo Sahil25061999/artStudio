@@ -18,6 +18,7 @@ export const Signup = () => {
     e.preventDefault();
     if (!checkEmail(email)) {
       dispatchAuth({ type: 'EMAIL_ERROR', payload: true });
+      return;
     }
     if (!checkPassword(password)) {
       dispatchAuth({ type: 'PASSWORD_ERROR', payload: true });
@@ -31,6 +32,8 @@ export const Signup = () => {
       });
       localStorage.setItem('token', signUpResp.data.encodedToken);
       dispatchAuth({ type: 'SIGN_IN_OUT', payload: true });
+      dispatchAuth({ type: 'EMAIL_ERROR', payload: false });
+      dispatchAuth({ type: 'PASSWORD_ERROR', payload: false });
       navigate(location.state?.from?.pathname || '/', { replace: true });
     } catch (error) {
       console.error(error);

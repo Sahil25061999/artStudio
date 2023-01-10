@@ -40,8 +40,11 @@ export const IndividualPlaylist = () => {
   return (
     <div className="video-page app">
       <VideoList>
-        {playlistVideoList.length &&
-          playlistVideoList.map((item) => <VideoCard video={item} />)}
+        {playlistVideoList.length ? (
+          playlistVideoList.map((item) => <VideoCard video={item} />)
+        ) : (
+          <h1>Playlist is empty</h1>
+        )}
       </VideoList>
     </div>
   );

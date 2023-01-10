@@ -32,8 +32,11 @@ export const Playlist = () => {
   return (
     <div className="video-page app">
       <VideoList>
-        {playlist.length &&
-          playlist.map((item) => <PlaylistCard playlist={item} />)}
+        {playlist.length ? (
+          playlist.map((item) => <PlaylistCard playlist={item} />)
+        ) : (
+          <h1>Create a playlist</h1>
+        )}
       </VideoList>
     </div>
   );

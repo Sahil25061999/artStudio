@@ -10,35 +10,8 @@ import { useDocumentTitle } from '../../hook/hook_index';
 import { getToken } from '../../utils/utils_index';
 
 export const History = () => {
-  // const { videoInformation } = useVideoList();
-
   const token = getToken();
   useDocumentTitle('History | ArtStudio');
-
-  // const {
-  //   watchLikeList: { likedList },
-  //   watchLikeListDispatch,
-  // } = useWatchLikeList();
-  // console.log('first', likedList);
-
-  // useEffect(() => {
-  //   console.log('second', likedList);
-
-  //   watchLikeListDispatch({
-  //     type: 'LIKED_VIDEOS',
-  //     payload: [
-  //       ...likedList
-  //         .map((item) => {
-  //           return videoInformation.filter((video) => {
-  //             if (video._id === item._id) {
-  //               return { ...video };
-  //             }
-  //           });
-  //         })
-  //         .reduce((accValue, currValue) => [...accValue, ...currValue], []),
-  //     ],
-  //   });
-  // }, [videoInformation]);
 
   const { historyList, setHistoryList } = useHistory();
 
@@ -58,8 +31,11 @@ export const History = () => {
   return (
     <div className="video-page app">
       <VideoList>
-        {historyList.length &&
-          historyList.map((item) => <VideoCard video={item} />)}
+        {historyList.length ? (
+          historyList.map((item) => <VideoCard video={item} />)
+        ) : (
+          <h1>No watch history available</h1>
+        )}
       </VideoList>
     </div>
   );

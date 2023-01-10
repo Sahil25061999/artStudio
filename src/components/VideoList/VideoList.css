@@ -13,3 +13,13 @@
   grid-template-rows: max-content;
   gap: 1.2rem;
 }
+
+.list-container > h1 {
+  grid-column: 1/-1;
+  place-self: center;
+  text-align: center;
+}
+
+.search-title {
+  font-weight: normal;
+}

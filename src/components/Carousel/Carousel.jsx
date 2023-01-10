@@ -1,12 +1,12 @@
 import React from 'react';
-import CarouselImage from '../../assets/image/carouselImage/homecarousel3.webp';
+import thumbnailSrc from '../../assets/image/videoCard/11.jpg';
 import './Carousel.css';
 
 export const Carousel = () => {
   return (
     <div className="carousel-container">
       <div className="carousel-image-container">
-        {/* <img className="carousel-bg-img" src={CarouselImage} alt="" /> */}
+        {/* <img className="carousel-bg-img" src={thumbnailSrc} alt="" /> */}
         <iframe
           src="https://www.youtube.com/embed/OQj52ojnlk8"
           title="YouTube video player"
@@ -17,7 +17,8 @@ export const Carousel = () => {
       </div>
 
       <h1 className="carousel-video-title">
-        Sand of times | Abstract art launch event.
+        Greed makes one's lose their mind | Tumbbad | Horror Scene | Sohum Shah,
+        Mohammad Samadn
       </h1>
       <button className="carousel-watch-btn btn btn-white">Watch Now</button>
     </div>

@@ -28,10 +28,13 @@ export const WatchLater = () => {
   return (
     <div className="video-page app">
       <VideoList>
-        {watchLaterList.length &&
+        {watchLaterList.length ? (
           watchLaterList.map((item) => (
             <VideoCard key={item._id} video={item} />
-          ))}
+          ))
+        ) : (
+          <h1>There are currently no videos in watchlater list.</h1>
+        )}
       </VideoList>
     </div>
   );

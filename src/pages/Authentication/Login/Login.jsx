@@ -17,14 +17,12 @@ export const Login = () => {
     e.preventDefault();
     if (!checkEmail(email)) {
       dispatchAuth({ type: 'EMAIL_ERROR', payload: true });
+      return;
     }
     if (!checkPassword(password)) {
       dispatchAuth({ type: 'PASSWORD_ERROR', payload: true });
       return;
     }
-
-    dispatchAuth({ type: 'EMAIL_ERROR', payload: false });
-    dispatchAuth({ type: 'PASSWORD_ERROR', payload: false });
 
     try {
       const loginResp = await axios.post('/api/auth/login', {
@@ -33,9 +31,13 @@ export const Login = () => {
       });
       localStorage.setItem('token', loginResp.data.encodedToken);
       dispatchAuth({ type: 'SIGN_IN_OUT', payload: true });
+      dispatchAuth({ type: 'EMAIL_ERROR', payload: false });
+      dispatchAuth({ type: 'PASSWORD_ERROR', payload: false });
       navigate(location.state?.from?.pathname || '/', { replace: true });
     } catch (error) {
       console.error(error);
+      dispatchAuth({ type: 'EMAIL_ERROR', payload: true });
+      dispatchAuth({ type: 'PASSWORD_ERROR', payload: true });
     }
   };
 
